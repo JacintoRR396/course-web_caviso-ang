@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AppSectionMembersComponent } from './app-section-members.component';
+import { AppAsideComponent } from './app-aside.component';
 
-describe('AppSectionMembersComponent', () => {
-  let component: AppSectionMembersComponent;
-  let fixture: ComponentFixture<AppSectionMembersComponent>;
+describe('AppAsideComponent', () => {
+  let component: AppAsideComponent;
+  let fixture: ComponentFixture<AppAsideComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AppSectionMembersComponent ]
+      declarations: [ AppAsideComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AppSectionMembersComponent);
+    fixture = TestBed.createComponent(AppAsideComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

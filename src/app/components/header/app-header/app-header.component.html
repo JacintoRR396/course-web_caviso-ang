@@ -12,21 +12,21 @@
         <!-- Navbar links -->
         <div id="navbarNav" class="nav-main__cnav navbar-collapse collapse">
             <ul class="nav-main__cnav__ul navbar-nav mr-auto col-ms">
-                <li *ngFor="let menuItemFor of menuItems" class="nav-item">
-                    <a class="nav-link" [routerLink]="menuItemFor.path">{{menuItemFor.name}}</a>
+                <li class="nav-item" *ngFor="let menuItemFor of menuItems">
+                    <a class="nav-link" [routerLink]="menuItemFor.path" routerLinkActive="active" [routerLinkActiveOptions]="{ exact : true}">{{menuItemFor.name}}</a>
                 </li>
                 <!-- Dropdown -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Con&oacute;cenos</a>
                     <div class="navbarNav-how dropdown-menu bg-dark">
-                      <a class="dropdown-item text-secondary" routerLink="/club">El Club</a>
-                      <a class="dropdown-item text-secondary" routerLink="/junta">La Junta Directiva</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item text-secondary" routerLink="/contacto">Contacto</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item text-secondary" routerLink="/registro">Ap&uacute;tate</a>
+                        <a class="dropdown-item text-secondary" routerLink="/club">El Club</a>
+                        <a class="dropdown-item text-secondary" routerLink="/junta">La Junta Directiva</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-secondary" routerLink="/contacto">Contacto</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-secondary" routerLink="/registro">Ap&uacute;tate</a>
                     </div>
-                  </li>
+                </li>
             </ul>
             <!-- Search Form -->
             <div class="nav-main__cform-search col-ms">

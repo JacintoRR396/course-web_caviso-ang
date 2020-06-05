@@ -1,0 +1,62 @@
+<section class="section-container">
+    <h4>Miembros</h4>
+    <div class="list__cdata list-group" id="list-data-tab" role="tablist">
+        <!-- List Elements -->
+        <a class="list__cdata__item list-group-item list-group-item-action rounded" [routerLink]="['/miembros/detalle', memberFor.id]" id="list-show-first" (click)="onEvent($event)" *ngFor="let memberFor of members">
+            <div class="row">
+                <div class="list__cdata__item__cimg col-sm-2">
+                    <img class="img-fluid rounded icon48" [src]="memberFor.pathImage" alt="Avatar" title="Avatar">
+                </div>
+                <div class="list__cdata__item__data col-sm-9">
+                    <div class="row">
+                        <div class="col">
+                            <h6 class="mb-1">{{memberFor.name}} {{memberFor.surname}}<strong> ({{memberFor.alias}})</strong></h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            <span>Socio :</span>
+                            <strong class="badge badge-primary badge-pill">12</strong>
+                        </div>
+                        <div class="col-5">
+                            <span>Categoria :</span>
+                            <strong class="badge badge-primary badge-pill">Benjamin</strong>
+                        </div>
+                        <div class="col-4">
+                            <span>Carreras :</span>
+                            <strong class="badge badge-primary badge-pill">25</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="list__cdata__item__buttons col-sm-1">
+                    <!-- Update Elemnt -->
+                    <button class="btn btn-outline-primary btn-sm" [routerLink]="['/miembros/actualizar', memberFor.id]" (click)="onEvent($event)
+                    ">
+                        <i class="fas fa-pen"></i>
+                    </button>
+                    <!-- Delete Elemnt -->
+                    <button class="btn btn-outline-danger btn-sm">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </a>
+    </div>
+    <!-- Add Elemnt -->
+    <a class="list__btn-add btn btn-outline-success btn-sm col-3" id="list-add-generic" routerLink="/miembros/registrar">Añadir</a>
+    <!-- Pagination Elemnts -->
+    <nav class="list__pagination col-5" aria-label="Page navigation">
+        <ul class="pagination pagination-sm justify-content-end">
+        <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+        </li>
+        </ul>
+    </nav>
+    <router-outlet></router-outlet>
+</section>

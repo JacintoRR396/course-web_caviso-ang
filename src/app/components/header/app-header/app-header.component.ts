@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+interface MenuItem{
+  name:string,
+  path:string
+}
+
 @Component({
   selector: 'app-header',
   templateUrl: './app-header.component.html',
@@ -9,27 +14,11 @@ import { Component, OnInit } from '@angular/core';
 export class AppHeaderComponent implements OnInit {
 
   menuItems: Array<MenuItem> = [];
-
-  menuItem0: MenuItem = {
-    name: 'Inicio',
-    path: '/'
-  };
-  menuItem1: MenuItem = {
-    name: 'Miembros',
-    path: '/miembros'
-  };
-  menuItem2: MenuItem = {
-    name: 'Carreras',
-    path: '/carreras'
-  };
-  menuItem3: MenuItem = {
-    name: 'Noticias',
-    path: '/noticias'
-  };
-  menuItem4: MenuItem = {
-    name: 'Entrenos',
-    path: '/entrenos'
-  };
+  menuItem0: MenuItem = { name: 'Inicio', path: '/' };
+  menuItem1: MenuItem = { name: 'Miembros', path: '/miembros' };
+  menuItem2: MenuItem = { name: 'Carreras', path: '/carreras' };
+  menuItem3: MenuItem = { name: 'Noticias', path: '/noticias' };
+  menuItem4: MenuItem = { name: 'Entrenos', path: '/entrenos' };
 
   constructor() { }
 
@@ -40,9 +29,4 @@ export class AppHeaderComponent implements OnInit {
     this.menuItems.push(this.menuItem4);
   }
 
-}
-
-interface MenuItem{
-  name:string,
-  path:string
 }

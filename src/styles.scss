@@ -120,10 +120,16 @@ hr{
     margin: 0 auto;
     padding: 0.5rem;
     display: flex;
+    justify-content: space-between;
 }
+    .main-container h4{
+        width: 100%;
+        text-align: center;
+    }
+
     .section-container{
         margin: 0 0.15rem 0 0;
-        width: 65%;
+        /*width: 65%;*/
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-end;
@@ -131,7 +137,7 @@ hr{
     }
     .aside-container{
         margin: 0 0 0 0.15rem;
-        width: 35%;
+        width: 25%;
     }
 
 footer{
