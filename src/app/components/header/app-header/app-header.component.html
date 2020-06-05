@@ -1,0 +1,235 @@
+<header class="header-main-container container-fluid sticky-top">
+    <!-- MAIN NAV -->
+    <nav class="nav-main navbar navbar-expand-md bg-dark navbar-dark">
+        <!-- Brand -->
+        <a class="nav-main__brand navbar-brand" href="/">
+            <h1><abbr title="Club">C</abbr><abbr title="Atletismo">A</abbr> Viso</h1>
+        </a>
+        <!-- Toggler/collapsibe Button -->
+        <button class="nav-main__toggler navbar-toggler navbar-toggler-right bg-primary font-weight-bold text-white rounded" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navbar links -->
+        <div id="navbarNav" class="nav-main__cnav navbar-collapse collapse">
+            <ul class="nav-main__cnav__ul navbar-nav mr-auto col-ms">
+                <li *ngFor="let menuItemFor of menuItems" class="nav-item">
+                    <a class="nav-link" [routerLink]="menuItemFor.path">{{menuItemFor.name}}</a>
+                </li>
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Con&oacute;cenos</a>
+                    <div class="navbarNav-how dropdown-menu bg-dark">
+                      <a class="dropdown-item text-secondary" routerLink="/club">El Club</a>
+                      <a class="dropdown-item text-secondary" routerLink="/junta">La Junta Directiva</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item text-secondary" routerLink="/contacto">Contacto</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item text-secondary" routerLink="/registro">Ap&uacute;tate</a>
+                    </div>
+                  </li>
+            </ul>
+            <!-- Search Form -->
+            <div class="nav-main__cform-search col-ms">
+                <form id="form-search" class="form-inline col-md mt-2 mt-md-0">
+                    <input class="form-control form-control-sm mr-sm-1" type="text" placeholder="..." aria-label="Search" />
+                    <button class="btn btn-outline-info btn-sm my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
+            </div>
+            <!-- Login -->
+            <div class="nav-main__clogin col-ms">
+                <a href="#collapseLogin" data-toggle="collapse" aria-controls="collapseLogin" aria-expanded="false" role="button">
+                    <img class="img-fluid icon32" src="../../../assets/images/img_login/login.svg" alt="Login" title="Login">
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!-- COLLAPSE LOGIN -->
+    <div id="collapseLogin" class="collapse bg-dark">
+        <!-- CAROUSEL LOGIN -->
+        <div id="carouselLogin" class="carousel slide" data-ride="carousel" data-interval="false">
+            <div class="carousel-inner">
+                <!-- CONTAINER FORGOTTEN PASSWORD -->
+                <div class="carousel-item">
+                    <img class="img-fluid rounded icon64" src="../../../assets/images/img_login/forgot_password.svg" alt="Forgot Pass" title="Recuperar Credenciales">
+                    <h2>Contraseña</h2>
+                    <form id="formForgotPass" class="was-validated" action="">
+                        <div class="form-row">
+                            <div class="form-group col-sm-6 mb-1">
+                                <label class="col-form-label-sm mb-1" for="formForgotPassUsername">
+                                    <i class="fas fa-user"></i>
+                                    Nombre de Usuario:
+                                </label>
+                                <input type="text" id="formForgotPassUsername" class="form-control form-control-sm" name="formForgotPassUsername" pattern="^[A-Z]{1}[a-zñA-Záéíóú\\s/]{2,29}" autofocus required aria-describedby="formForgotPassUsernameHelp"/>
+                                <small id="formForgotPassUsernameHelp" class="form-text invalid-feedback">Min 3, Max 30 y comenzar con May.</small>
+                            </div>
+                            <div class="form-group col-sm-6 mb-1">
+                                <label class="col-form-label-sm mb-1" for="formForgotPassEmail">
+                                    <i class="fas fa-envelope"></i>
+                                    Email:
+                                </label>
+                                <input type="email" id="formForgotPassEmail" class="form-control form-control-sm" name="formForgotPassEmail" required aria-describedby="formForgotPassEmailHelp"/>
+                                <small id="formForgotPassEmailHelp" class="form-text invalid-feedback">Formato de email válido.</small>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-row">
+                            <div class="form-group col-md-6 mb-2">
+                                <span class="form-control-sm">Has recordado la contraseña!!! </span>
+                                <a href="#" class="form-control-sm" data-target="#carouselLogin" data-slide-to="1">
+                                    Login
+                                </a>
+                                <br>
+                                <span class="form-control-sm">No tienes una cuenta!!! </span>
+                                <a href="#" class="form-control-sm" data-target="#carouselLogin" data-slide-to="2">
+                                    Registrarse
+                                </a>
+                            </div>
+                            <div class="form-group col-md-6 mb-2 button-container--center">
+                                <button type="submit" class="btn btn-primary btn-sm">Recuperar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- CONTAINER ACCESS LOGIN -->
+                <div class="carousel-item active">
+                    <img class="img-fluid rounded icon64" src="../../../assets/images/img_login/secure_login.svg" alt="Login" title="Login">
+                    <h2>Login</h2>
+                    <form id="formLogin" class="was-validated" action="">
+                        <div class="form-row">
+                            <div class="form-group col-sm-6 mb-1">
+                                <label class="col-form-label-sm mb-1" for="formLoginUsername">
+                                    <i class="fas fa-user"></i>
+                                    Nombre de Usuario:
+                                </label>
+                                <input id="formLoginUsername" class="form-control form-control-sm" type="text" name="formLoginUsername" pattern="^[A-Z]{1}[a-zñA-Záéíóú\\s/]{2,29}" autofocus required aria-describedby="formLoginUsernameHelp"/>
+                                <small id="formLoginUsernameHelp" class="form-text invalid-feedback">Min 3, Max 30 y comenzar con May.</small>
+                            </div>
+                            <div class="form-group col-sm-6 mb-1">
+                                <label class="col-form-label-sm mb-1" for="formLoginPasswd">
+                                    <i class="fas fa-key"></i>
+                                    Contraseña:
+                                </label>
+                                <input id="formLoginPasswd" class="form-control form-control-sm" type="password" name="formLoginPasswd" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,}$" required aria-describedby="formLoginPasswdHelp"/>
+                                <small id="formLoginPasswdHelp" class="form-text invalid-feedback">Al menos (1 May, 1 Min, 1 Num, 1 Símbolo) y NO espacios.</small>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-row">
+                            <div class="form-group col-md-6 mb-2">
+                                <a href="#" class="form-control-sm" data-target="#carouselLogin" data-slide-to="0">¿Has olvidado la contraseña?</a>
+                                <br>
+                                <a href="#" class="form-control-sm" data-target="#carouselLogin" data-slide-to="2">Registrarse</a>
+                            </div>
+                            <div class="form-group col-md-6 mb-2 button-container--center">
+                                <button type="submit" class="btn btn-primary btn-sm">Acceder</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- CONTAINER REGISTER -->
+                <div class="carousel-item">
+                    <img class="img-fluid rounded icon64" src="../../../assets/images/img_login/access_account.svg" alt="Login" title="Login">
+                    <h2>Registrarse</h2>
+                    <form id="formRegister" class="was-validated" action="">
+                        <div class="form-row">
+                            <div class="form-group col-md-6 mb-0">
+                                <label class="col-form-label-sm mb-1" for="formRegisterUsername">
+                                    <i class="fas fa-user"></i>
+                                    Nombre de Usuario:
+                                </label>
+                                <input id="formRegisterUsername" class="form-control form-control-sm" type="text" name="formRegisterUsername"  pattern="^[A-Z]{1}[a-zñA-Záéíóú\\s/]{2,29}" autofocus required aria-describedby="formRegisterUsernameHelp"/>
+                                <small id="formRegisterUsernameHelp" class="form-text invalid-feedback">Min 3, Max 30 y comenzar con May.</small>
+                            </div>
+                            <div class="form-group col-md-6 mb-0">
+                                <label class="col-form-label-sm mb-1" for="formRegisterEmail">
+                                    <i class="fas fa-envelope"></i>
+                                    Email:
+                                </label>
+                                <input id="formRegisterEmail" class="form-control form-control-sm" type="email" name="formRegisterEmail" required aria-describedby="formRegisterEmailHelp"/>
+                                <small id="formRegisterEmailHelp" class="form-text invalid-feedback">Formato de email válido.</small>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6 mb-1">
+                                <label class="col-form-label-sm mb-1" for="formRegisterPasswd">
+                                    <i class="fas fa-key"></i>
+                                    Contraseña:
+                                </label>
+                                <input id="formRegisterPasswd" class="form-control form-control-sm" type="password" name="formRegisterPasswd" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,}$" required aria-describedby="formRegisterPasswdHelp"/>
+                                <small id="formRegisterPasswdHelp" class="form-text invalid-feedback">Al menos (1 May, 1 Min, 1 Num, 1 Símbolo) y NO espacios.</small>
+                            </div>
+                            <div class="form-group col-md-6 mb-1">
+                                <label class="col-form-label-sm mb-1" for="formRegisterPasswdRepeat">
+                                    <i class="fas fa-key"></i>
+                                    Repetir Contraseña:
+                                </label>
+                                <input id="formRegisterPasswdRepeat" class="form-control form-control-sm" type="password" name="formRegisterPasswdRepeat" required aria-describedby="formRegisterPasswdRepeatHelp"/>
+                                <small id="formRegisterPasswdRepeatHelp" class="form-text invalid-feedback">Al menos (1 May, 1 Min, 1 Num, 1 Símbolo) y NO espacios.</small>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-row">
+                            <div class="form-group col-md-6 mb-2">
+                                <span class="form-control-sm">Has olvidado la contraseña!!! </span>
+                                <a href="#" class="form-control-sm" data-target="#carouselLogin" data-slide-to="0">
+                                    Recuperar
+                                </a>
+                                <br>
+                                <span class="form-control-sm">Ya posees una cuenta!!! </span>
+                                <a href="#" class="form-control-sm" data-target="#carouselLogin" data-slide-to="1">
+                                    Login
+                                </a>
+                            </div>
+                            <div class="form-group col-md-6 mb-2 button-container--center">
+                                <button type="submit" class="btn btn-primary btn-sm">Registrarme</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- USER DATA LOGIN -->
+        <div class="data-loign container">
+            <div class="data-loign__img">
+                <img class="img-fluid rounded icon64" src="../../../assets/images/img_login/avatar_female.svg" alt="Avatar" title="Avatar">
+                <h6 class="mb-1">Jacinto Roldán Rodríguez <strong> (Balbino)</strong></h6>
+            </div>
+            <div class="data-loign__data">
+                <div>
+                    <div>
+                        <span>Socio :</span>
+                        <strong class="badge badge-primary badge-pill">12</strong>
+                    </div>
+                    <div>
+                        <span>Categoria :</span>
+                        <strong class="badge badge-primary badge-pill">Benjamin</strong>
+                    </div>
+                    <div>
+                        <span>Saldo :</span>
+                        <strong class="badge badge-primary badge-pill">25€</strong>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <a href="#" class="form-control-sm">
+                            Carreras
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#" class="form-control-sm">
+                            Equipación
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#" class="form-control-sm">
+                            Contabilidad
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="data-loign__button">
+                <button type="button" class="btn btn-danger btn-sm">X</button>
+            </div>
+        </div>
+    </div>
+</header>
