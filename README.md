@@ -12,5 +12,5 @@ Se puede consultar información respecto a los **miembros** del club, las próxi
 ### Tools
 - Maven - 3.2+
 - Visual Studio
-- Angular CLI
+- Angular CLI 9.1.7.
 - Git
