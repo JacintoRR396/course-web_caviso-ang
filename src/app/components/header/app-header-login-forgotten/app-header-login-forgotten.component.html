@@ -1,0 +1,41 @@
+<div class="carousel-item">
+    <img class="img-fluid rounded icon64" src="../../../assets/images/img_login/forgot_password.svg" alt="Forgot Pass" title="Recuperar Credenciales">
+    <h2>Contraseña</h2>
+    <form id="formForgotPass" class="was-validated" action="">
+        <div class="form-row">
+            <div class="form-group col-sm-6 mb-1">
+                <label class="col-form-label-sm mb-1" for="formForgotPassUsername">
+                    <i class="fas fa-user"></i>
+                    Nombre de Usuario:
+                </label>
+                <input type="text" id="formForgotPassUsername" class="form-control form-control-sm" name="formForgotPassUsername" pattern="^[A-Z]{1}[a-zñA-Záéíóú\\s/]{2,29}" autofocus required aria-describedby="formForgotPassUsernameHelp"/>
+                <small id="formForgotPassUsernameHelp" class="form-text invalid-feedback">Min 3, Max 30 y comenzar con May.</small>
+            </div>
+            <div class="form-group col-sm-6 mb-1">
+                <label class="col-form-label-sm mb-1" for="formForgotPassEmail">
+                    <i class="fas fa-envelope"></i>
+                    Email:
+                </label>
+                <input type="email" id="formForgotPassEmail" class="form-control form-control-sm" name="formForgotPassEmail" required aria-describedby="formForgotPassEmailHelp"/>
+                <small id="formForgotPassEmailHelp" class="form-text invalid-feedback">Formato de email válido.</small>
+            </div>
+        </div>
+        <hr>
+        <div class="form-row">
+            <div class="form-group col-md-6 mb-2">
+                <span class="form-control-sm">Has recordado la contraseña!!! </span>
+                <a href="#" class="form-control-sm" data-target="#carouselLogin" data-slide-to="1">
+                    Login
+                </a>
+                <br>
+                <span class="form-control-sm">No tienes una cuenta!!! </span>
+                <a href="#" class="form-control-sm" data-target="#carouselLogin" data-slide-to="2">
+                    Registrarse
+                </a>
+            </div>
+            <div class="form-group col-md-6 mb-2 button-container--center">
+                <button type="submit" class="btn btn-primary btn-sm">Recuperar</button>
+            </div>
+        </div>
+    </form>
+</div>

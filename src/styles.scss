@@ -64,6 +64,7 @@ span{
     color: white;
     font-size: 0.8rem;
     text-shadow: 1px 1px 2px var(--color-secondary);
+    padding-right: 0.25rem;
 }
 
 i{
@@ -167,6 +168,7 @@ footer{
         .section-container, .aside-container{
             margin: 0;
             width: 100%;
+            justify-content: center;
         }
 }
 

@@ -71,43 +71,21 @@
         #carouselLogin form input{
             font-size: 0.75rem;
         }
+        .cform__errors{
+            height: 1.5rem;
+        }
+        .cform__errors small{
+            display: block;
+            width: 100%;
+            margin-top: .25rem;
+            font-size: 80%;
+            color: #dc3545;
+        }
 
     .button-container--center{
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-
-/* CONTAINER DATA LOGIN */
-.data-loign{
-    background-color: black;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-}
-    .data-loign > div{
-        width: 90%;
-        margin: 0 auto;
-    }
-    .data-loign__img h6{
-        border-top: 0.15rem solid var(--bg-color-secondary);
-        margin-top: -1rem;
-        padding-top: 1.25rem;
-    }
-
-    .data-loign__data{
-        display: flex;
-        justify-content: center;
-    }
-    .data-loign__data > div{
-        width: 20%;
-    }
-
-    .data-loign__button button{
-        width: 128px;
-        height: 24px;
-        margin: 0.25rem 0 0.5rem 0;
-        font-size: 0.75rem;
     }
 
 
@@ -123,20 +101,10 @@
     .navbar-expand-md .navbar-nav {
         flex-wrap: wrap;
     }
-    .nav-main__cform-search input{
-        margin-bottom: 0.25rem !important;
-    }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (max-width: 768px) {
-    /* MENU */
-    .nav-main__cform-search input{
-        margin-bottom: 0rem !important;
-    }
-    .nav-main__clogin-img {
-        margin-top: 0.5rem !important;
-    }
     .navbarNav-how{
         text-align: center;
         margin: 0 auto;
@@ -150,8 +118,5 @@
 
  /*Small devices (landscape phones, 576px and up)*/
 @media (max-width: 576px) {
-    /* MENU */
-    .nav-main__cform-search input, .nav-main__cform-search button{
-        width: 80%;
-    }
+
 }

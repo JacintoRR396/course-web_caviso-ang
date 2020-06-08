@@ -1,0 +1,56 @@
+/* CONTAINER DATA LOGIN */
+.cdata-login{
+    background-color: black;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+    .cdata-login > div{
+        width: 90%;
+        margin: 0 auto;
+    }
+    .cdata-login__img{
+        margin-top: 0.5rem !important;
+    }
+        .cdata-login__img h6{
+            border-top: 0.15rem solid var(--bg-color-secondary);
+            margin-top: -1rem;
+            padding-top: 1.25rem;
+        }
+
+    .cdata-login__data{
+        display: flex;
+        justify-content: center;
+    }
+        .cdata-login__data > div{
+            width: 100%;
+        }
+
+    .cdata-login__btn button{
+        width: 128px;
+        height: 24px;
+        margin: 0.25rem 0 0.5rem 0;
+        font-size: 0.75rem;
+    }
+
+
+/*** -------------- RESPONSIVE -------------- ***/
+/* Extra large devices (large desktops, 1200px and up) */
+@media (max-width: 1200px) {
+
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (max-width: 992px) {
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+
+}
+
+ /*Small devices (landscape phones, 576px and up)*/
+@media (max-width: 576px) {
+
+}

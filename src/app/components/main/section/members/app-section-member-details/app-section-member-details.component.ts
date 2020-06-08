@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IMember } from 'src/app/models/imember';
 
 @Component({
   selector: 'app-section-member-details',
@@ -8,10 +9,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AppSectionMemberDetailsComponent implements OnInit {
 
+  id: number;
+  member: IMember;
+
   constructor(private ruta: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log('Details:', this.ruta.snapshot.params.id);
+    this.id = this.ruta.snapshot.params.id;
   }
 
 }

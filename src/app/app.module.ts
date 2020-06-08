@@ -1,12 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { AppHeaderComponent } from './components/header/app-header/app-header.component';
 import { AppHeaderSearchComponent } from './components/header/app-header-search/app-header-search.component';
+import { AppHeaderLoginDataComponent } from './components/header/app-header-login-data/app-header-login-data.component';
+import { AppHeaderLoginForgottenComponent } from './components/header/app-header-login-forgotten/app-header-login-forgotten.component';
 
 import { AppSectionHomeComponent } from './components/main/section/app-section-home/app-section-home.component';
 import { AppSectionMemberListComponent } from './components/main/section/members/app-section-member-list/app-section-member-list.component';
@@ -25,6 +27,8 @@ import { Page404Component } from './components/admin/page404/page404.component';
     AppComponent,
     AppHeaderComponent,
     AppHeaderSearchComponent,
+    AppHeaderLoginDataComponent,
+    AppHeaderLoginForgottenComponent,
 
     AppSectionHomeComponent,
     AppSectionMemberListComponent,
@@ -37,11 +41,13 @@ import { Page404Component } from './components/admin/page404/page404.component';
     AppFooterComponent,
 
     Page404Component
+
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     FormsModule,
-    AppRoutingModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [

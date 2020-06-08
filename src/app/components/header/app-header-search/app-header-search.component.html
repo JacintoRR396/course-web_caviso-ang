@@ -1,6 +1,6 @@
-<div class="nav-main__cform-search col-ms">
-    <form id="form-search" class="form-inline col-md mt-2 mt-md-0">
-        <input class="form-control form-control-sm mr-sm-1" type="text" [(ngModel)]="valSearch" placeholder="..." name="formSearchValue" aria-label="Search" (keydown)="searchInput($event)" />
-        <button class="btn btn-outline-info btn-sm my-2 my-sm-0" type="submit" (click)="searchBtn()">Buscar</button>
+<div class="cform-search col-ms">
+    <form class="cform-search__form form-inline col-md mt-2 mt-md-0 was-validated" action="" [formGroup]="formSearch">
+        <input type="text" class="cform-search__form__input form-control form-control-sm mr-sm-1" placeholder="..." name="formSearchValue" pattern="^[a-zñA-Záéíóú\\s/]{2,}" required aria-label="Search" (input)="searchInput($event)" data-toggle="tooltip" data-placement="bottom" title="Introduzca el valor a buscar" formControlName="valSearch" />
+        <button type="submit" class="cform-search__form__btn btn btn-outline-info btn-sm my-2 my-sm-0" (click)="searchBtn()" [disabled]="!formSearch.valid">Buscar</button>
     </form>
 </div>
