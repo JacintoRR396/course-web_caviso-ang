@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { AppHeaderComponent } from './components/header/app-header/app-header.component';
 import { AppHeaderSearchComponent } from './components/header/app-header-search/app-header-search.component';
 import { AppHeaderLoginDataComponent } from './components/header/app-header-login-data/app-header-login-data.component';
-import { AppHeaderLoginForgottenComponent } from './components/header/app-header-login-forgotten/app-header-login-forgotten.component';
 
 import { AppSectionHomeComponent } from './components/main/section/app-section-home/app-section-home.component';
 import { AppSectionMemberListComponent } from './components/main/section/members/app-section-member-list/app-section-member-list.component';
@@ -28,7 +27,6 @@ import { Page404Component } from './components/admin/page404/page404.component';
     AppHeaderComponent,
     AppHeaderSearchComponent,
     AppHeaderLoginDataComponent,
-    AppHeaderLoginForgottenComponent,
 
     AppSectionHomeComponent,
     AppSectionMemberListComponent,

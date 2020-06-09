@@ -57,7 +57,7 @@
                                 <input type="text" class="form-control form-control-sm" name="formForgotPassUsername" pattern="^[A-Z]{1}[a-zñA-Záéíóú\\s/]{2,29}" autofocus required aria-describedby="formForgotPassUsernameHelp" formControlName="formForgotPassUsername" />
                                 <div *ngIf="formForgotten.controls.formForgotPassUsername.invalid" class="cform__errors">
                                     <small *ngIf="formForgotten.controls.formForgotPassUsername.errors.required" id="formForgotPassUsernameHelp" class="form-text">Campo Oblitario.</small>
-                                    <small *ngIf="formForgotten.controls.formForgotPassUsername.errors.pattern" id="formForgotPassUsernameHelp" class="form-text">Min 3, Max 30 y comenzar con May.</small>
+                                    <small *ngIf="formForgotten.controls.formForgotPassUsername.errors.pattern" id="formForgotPassUsernameHelp" class="form-text">Comenzar con May, Min 3, Max 30 y NO espacios.</small>
                                 </div>
                             </div>
                             <div class="form-group col-sm-6 mb-1">
@@ -86,33 +86,39 @@
                                 </a>
                             </div>
                             <div class="form-group col-md-6 mb-2 button-container--center">
-                                <button type="submit" class="btn btn-primary btn-sm" (click)="formForgottenSubmit()" [disabled]="!formForgotten.valid">Recuperar</button>
+                                <button type="submit" class="btn btn-primary btn-sm" (click)="submitFormForgotten()" [disabled]="!formForgotten.valid">Recuperar</button>
                             </div>
                         </div>
                     </form>
                 </div>
-                    <!--<app-header-login-forgotten [bLoginSon]="bLogin"></app-header-login-forgotten>-->
                 <!-- CONTAINER ACCESS LOGIN -->
                 <div class="carousel-item active">
                     <img class="img-fluid rounded icon64" src="../../../assets/images/img_login/secure_login.svg" alt="Login" title="Login">
                     <h2>Login</h2>
-                    <form id="formLogin" class="was-validated" action="">
+                    <form id="formLogin" class="was-validated" action="" [formGroup]="formLogin">
                         <div class="form-row">
                             <div class="form-group col-sm-6 mb-1">
                                 <label class="col-form-label-sm mb-1" for="formLoginUsername">
                                     <i class="fas fa-user"></i>
                                     Nombre de Usuario:
                                 </label>
-                                <input id="formLoginUsername" class="form-control form-control-sm" type="text" name="formLoginUsername" pattern="^[A-Z]{1}[a-zñA-Záéíóú\\s/]{2,29}" autofocus required aria-describedby="formLoginUsernameHelp"/>
-                                <small id="formLoginUsernameHelp" class="form-text invalid-feedback">Min 3, Max 30 y comenzar con May.</small>
+                                <input type="text" class="form-control form-control-sm" name="formLoginUsername" pattern="^[A-Z]{1}[a-zñA-Záéíóú\\s/]{2,29}" autofocus required aria-describedby="formLoginUsernameHelp" formControlName="formLoginUsername" />
+                                <div *ngIf="formLogin.controls.formLoginUsername.invalid" class="cform__errors">
+                                    <small *ngIf="formLogin.controls.formLoginUsername.errors.required" id="formLoginUsernameHelp" class="form-text">Campo Oblitario.</small>
+                                    <small *ngIf="formLogin.controls.formLoginUsername.errors.pattern" id="formLoginUsernameHelp" class="form-text">Comenzar con May, Min 3, Max 30 y NO espacios.</small>
+                                </div>
                             </div>
                             <div class="form-group col-sm-6 mb-1">
                                 <label class="col-form-label-sm mb-1" for="formLoginPasswd">
                                     <i class="fas fa-key"></i>
                                     Contraseña:
                                 </label>
-                                <input id="formLoginPasswd" class="form-control form-control-sm" type="password" name="formLoginPasswd" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,}$" required aria-describedby="formLoginPasswdHelp"/>
-                                <small id="formLoginPasswdHelp" class="form-text invalid-feedback">Al menos (1 May, 1 Min, 1 Num, 1 Símbolo) y NO espacios.</small>
+                                <input type="password" class="form-control form-control-sm" name="formLoginPasswd" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\S+$).{8,}$" required aria-describedby="formLoginPasswdHelp" formControlName="formLoginPasswd" />
+                                <div *ngIf="formLogin.controls.formLoginPasswd.invalid" class="cform__errors">
+                                    <small *ngIf="formLogin.controls.formLoginPasswd.errors.required" id="formLoginPasswdHelp" class="form-text">Campo Oblitario.</small>
+                                    <small *ngIf="formLogin.controls.formLoginPasswd.errors.minLength" id="formLoginPasswdHelp" class="form-text">Min 8 Caracteres.</small>
+                                    <small *ngIf="formLogin.controls.formLoginPasswd.errors.pattern" id="formLoginPasswdHelp" class="form-text">Al menos (1 May, 1 Min, 1 Num, 1 Símbolo) y NO espacios.</small>
+                                </div>
                             </div>
                         </div>
                         <hr>
@@ -123,7 +129,7 @@
                                 <a href="#" class="form-control-sm" data-target="#carouselLogin" data-slide-to="2">Registrarse</a>
                             </div>
                             <div class="form-group col-md-6 mb-2 button-container--center">
-                                <button type="submit" class="btn btn-primary btn-sm">Acceder</button>
+                                <button type="submit" class="btn btn-primary btn-sm"  (click)="submitFormLogin()" [disabled]="!formLogin.valid">Acceder</button>
                             </div>
                         </div>
                     </form>

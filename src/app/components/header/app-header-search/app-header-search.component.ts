@@ -28,15 +28,11 @@ export class AppHeaderSearchComponent implements OnInit {
     });
   }
 
-  searchInput(event: any){
-      // if(event.key == "Enter"){
-      console.log('Valor:', this.formSearch.controls.valSearch.value);
-  }
-
   searchBtn(){
       console.log('Values:', this.formSearch.value);
       console.log('Invalid:', this.formSearch.controls.valSearch.invalid);
       console.log('Dirty:', this.formSearch.controls.valSearch.dirty);
+      console.log('Touched:', this.formSearch.controls.valSearch.touched);
       if (!this.formSearch.controls.valSearch.invalid && this.formSearch.controls.valSearch.dirty){
         console.log('Buscando datos sobre', this.formSearch.controls.valSearch.value, ' ...');
         this.formSearch.reset();

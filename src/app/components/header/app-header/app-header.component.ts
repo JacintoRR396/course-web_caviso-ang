@@ -25,13 +25,16 @@ export class AppHeaderComponent implements OnInit {
   bLogin: boolean;
 
   formForgotten: FormGroup;
+  formLogin: FormGroup;
+  formRegister: FormGroup;
 
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.initMenu();
     this.bLogin = false;
-    this.formForgottenCreate();
+    this.createFormForgotten();
+    this.createFormLogin();
   }
 
   initMenu(){
@@ -41,7 +44,9 @@ export class AppHeaderComponent implements OnInit {
     this.menuItems.push(this.menuItem4);
   }
 
-  formForgottenCreate(){
+  // FORGOTTEN PASSWORD
+  createFormForgotten(){
+    // create
     this.formForgotten = this.formBuilder.group({
       formForgotPassUsername: ['', Validators.compose([
         Validators.required, Validators.minLength(2), Validators.pattern('^[A-Z]{1}[a-zñA-Záéíóú\\s/]{2,29}')
@@ -50,14 +55,42 @@ export class AppHeaderComponent implements OnInit {
         Validators.required, Validators.email
       ])]
     });
+    // suscription
+    this.formForgotten.controls.formForgotPassUsername.valueChanges.subscribe(data => console.log(data));
+    this.formForgotten.controls.formForgotPassEmail.valueChanges.subscribe(data => console.log(data));
   }
 
-  formForgottenSubmit(){
+  submitFormForgotten(){
     console.log('Values:', this.formForgotten.value);
     if (this.formForgotten.valid){
-      console.log('Solicitando reset password ...');
+      console.log('Solicitando reset password para', this.formForgotten.controls.formForgotPassUsername.value , ' ...');
       this.formForgotten.reset();
     }
-}
+  }
+
+  // ACCESS LOGIN
+  createFormLogin(){
+    // create
+    this.formLogin = this.formBuilder.group({
+      formLoginUsername: ['', Validators.compose([
+        Validators.required, Validators.pattern('^[A-Z]{1}[a-zñA-Záéíóú\\s/]{2,29}')
+      ])],
+      formLoginPasswd:['', Validators.compose([
+        Validators.required, Validators.minLength(8),
+        Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\\S+$).{8,}$')
+      ])]
+    });
+  }
+
+  submitFormLogin(){
+    console.log('Values:', this.formLogin.value);
+    if (this.formLogin.valid){
+      console.log('Accediendo como usuario', this.formLogin.controls.formLoginUsername.value , ' ...');
+      this.bLogin = true;
+      this.formLogin.reset();
+    }
+  }
+
+  // REGISTER
 
 }
