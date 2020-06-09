@@ -21,20 +21,24 @@ export class AppHeaderSearchComponent implements OnInit {
   }
 
   createForm(){
+    // create
     this.formSearch = this.formBuilder.group({
-      valSearch: ['', Validators.compose([
+      formSearchValue: ['', Validators.compose([
         Validators.required, Validators.minLength(2), Validators.pattern('^[a-zñA-Záéíóú\\s/]{2,}')
       ])]
     });
+    // suscription
+    this.formSearch.controls.formSearchValue.valueChanges.subscribe(data => console.log(data));
   }
 
   searchBtn(){
       console.log('Values:', this.formSearch.value);
-      console.log('Invalid:', this.formSearch.controls.valSearch.invalid);
-      console.log('Dirty:', this.formSearch.controls.valSearch.dirty);
-      console.log('Touched:', this.formSearch.controls.valSearch.touched);
-      if (!this.formSearch.controls.valSearch.invalid && this.formSearch.controls.valSearch.dirty){
-        console.log('Buscando datos sobre', this.formSearch.controls.valSearch.value, ' ...');
+      console.log('Invalid:', this.formSearch.controls.formSearchValue.invalid);
+      console.log('Dirty:', this.formSearch.controls.formSearchValue.dirty);
+      console.log('Touched:', this.formSearch.controls.formSearchValue.touched);
+      if (!this.formSearch.controls.formSearchValue.invalid
+        && (this.formSearch.controls.formSearchValue.dirty || this.formSearch.controls.formSearchValue.touched)){
+        console.log('Buscando datos sobre', this.formSearch.controls.formSearchValue.value, ' ...');
         this.formSearch.reset();
       }
   }

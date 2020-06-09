@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/models/user';
 
 interface MenuItem{
-  name: string,
-  path: string
+  name: string;
+  path: string;
 }
 
 @Component({
@@ -22,21 +24,23 @@ export class AppHeaderComponent implements OnInit {
   menuItem3: MenuItem = { name: 'Noticias', path: '/noticias' };
   menuItem4: MenuItem = { name: 'Entrenos', path: '/entrenos' };
 
-  bLogin: boolean;
-
   formForgotten: FormGroup;
   formLogin: FormGroup;
   formRegister: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  userLogin: User;
+  bLogin: boolean;
+
+  constructor(private formBuilder: FormBuilder, private userService: UserService) { }
 
   ngOnInit(): void {
     this.initMenu();
-    this.bLogin = false;
     this.createFormForgotten();
     this.createFormLogin();
+    this.initUserLogin();
   }
 
+  // *** MENU ***
   initMenu(){
     this.menuItems.push(this.menuItem1);
     this.menuItems.push(this.menuItem2);
@@ -44,12 +48,12 @@ export class AppHeaderComponent implements OnInit {
     this.menuItems.push(this.menuItem4);
   }
 
-  // FORGOTTEN PASSWORD
+  // *** FORM FORGOTTEN PASSWORD ***
   createFormForgotten(){
     // create
     this.formForgotten = this.formBuilder.group({
       formForgotPassUsername: ['', Validators.compose([
-        Validators.required, Validators.minLength(2), Validators.pattern('^[A-Z]{1}[a-zñA-Záéíóú\\s/]{2,29}')
+        Validators.required, Validators.minLength(2), Validators.pattern('^[A-Z]{1}[a-zñA-Záéíóú0-9\\s/]{2,29}')
       ])],
       formForgotPassEmail: ['', Validators.compose([
         Validators.required, Validators.email
@@ -68,29 +72,51 @@ export class AppHeaderComponent implements OnInit {
     }
   }
 
-  // ACCESS LOGIN
+  // *** FORM ACCESS LOGIN ***
   createFormLogin(){
     // create
     this.formLogin = this.formBuilder.group({
       formLoginUsername: ['', Validators.compose([
-        Validators.required, Validators.pattern('^[A-Z]{1}[a-zñA-Záéíóú\\s/]{2,29}')
+        Validators.required, Validators.pattern('^[A-Z]{1}[a-zñA-Záéíóú0-9\\s/]{2,29}')
       ])],
       formLoginPasswd:['', Validators.compose([
         Validators.required, Validators.minLength(8),
         Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\\S+$).{8,}$')
       ])]
     });
+    // suscription
+    this.formLogin.controls.formLoginUsername.valueChanges.subscribe(data => console.log(data));
+    this.formLogin.controls.formLoginPasswd.valueChanges.subscribe(data => console.log(data));
   }
 
   submitFormLogin(){
     console.log('Values:', this.formLogin.value);
     if (this.formLogin.valid){
-      console.log('Accediendo como usuario', this.formLogin.controls.formLoginUsername.value , ' ...');
-      this.bLogin = true;
+      this.userLogin = this.userService.existUserByUsernameAndPasswd(
+        this.formLogin.value.formLoginUsername, this.formLogin.value.formLoginPasswd);
+      if (typeof(this.userLogin) !== 'undefined'){
+        this.userService.user = this.userLogin;
+        console.log(this.userService.user);
+        // TODO no persite los datos aún
+        this.bLogin = true;
+      }else{
+        this.bLogin = false;
+      }
       this.formLogin.reset();
     }
   }
 
-  // REGISTER
+  // *** FORM REGISTER ***
+  // TODO
+
+  // *** USER ***
+  initUserLogin(){
+    if (typeof(this.userService.user.id) !== 'undefined'){
+      this.userLogin = this.userService.user;
+      this.bLogin = true;
+    }else{
+      this.bLogin = false;
+    }
+  }
 
 }

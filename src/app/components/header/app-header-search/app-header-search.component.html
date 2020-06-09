@@ -1,6 +1,6 @@
 <div class="cform-search col-ms">
     <form class="cform-search__form form-inline col-md mt-2 mt-md-0 was-validated" action="" [formGroup]="formSearch">
-        <input type="text" class="cform-search__form__input form-control form-control-sm mr-sm-1" placeholder="..." name="formSearchValue" pattern="^[a-zñA-Záéíóú\\s/]{2,}" required aria-label="Search" data-toggle="tooltip" data-placement="bottom" title="Introduzca el valor a buscar" formControlName="valSearch" />
+        <input type="text" class="cform-search__form__input form-control form-control-sm mr-sm-1" placeholder="..." name="formSearchValue" pattern="^[a-zñA-Záéíóú\\s/]{2,}" required aria-label="Search" data-toggle="tooltip" data-placement="bottom" title="Introduzca el valor a buscar" formControlName="formSearchValue" />
         <button type="submit" class="cform-search__form__btn btn btn-outline-info btn-sm my-2 my-sm-0" (click)="searchBtn()" [disabled]="!formSearch.valid">Buscar</button>
     </form>
 </div>

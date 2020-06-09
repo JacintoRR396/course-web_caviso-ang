@@ -54,7 +54,7 @@
                                     <i class="fas fa-user"></i>
                                     Nombre de Usuario:
                                 </label>
-                                <input type="text" class="form-control form-control-sm" name="formForgotPassUsername" pattern="^[A-Z]{1}[a-zñA-Záéíóú\\s/]{2,29}" autofocus required aria-describedby="formForgotPassUsernameHelp" formControlName="formForgotPassUsername" />
+                                <input type="text" class="form-control form-control-sm" name="formForgotPassUsername" pattern="^[A-Z]{1}[a-zñA-Záéíóú0-9\\s/]{2,29}" autofocus required aria-describedby="formForgotPassUsernameHelp" formControlName="formForgotPassUsername" />
                                 <div *ngIf="formForgotten.controls.formForgotPassUsername.invalid" class="cform__errors">
                                     <small *ngIf="formForgotten.controls.formForgotPassUsername.errors.required" id="formForgotPassUsernameHelp" class="form-text">Campo Oblitario.</small>
                                     <small *ngIf="formForgotten.controls.formForgotPassUsername.errors.pattern" id="formForgotPassUsernameHelp" class="form-text">Comenzar con May, Min 3, Max 30 y NO espacios.</small>
@@ -102,7 +102,7 @@
                                     <i class="fas fa-user"></i>
                                     Nombre de Usuario:
                                 </label>
-                                <input type="text" class="form-control form-control-sm" name="formLoginUsername" pattern="^[A-Z]{1}[a-zñA-Záéíóú\\s/]{2,29}" autofocus required aria-describedby="formLoginUsernameHelp" formControlName="formLoginUsername" />
+                                <input type="text" class="form-control form-control-sm" name="formLoginUsername" pattern="^[A-Z]{1}[a-zñA-Záéíóú0-9\\s/]{2,29}" autofocus required aria-describedby="formLoginUsernameHelp" formControlName="formLoginUsername" />
                                 <div *ngIf="formLogin.controls.formLoginUsername.invalid" class="cform__errors">
                                     <small *ngIf="formLogin.controls.formLoginUsername.errors.required" id="formLoginUsernameHelp" class="form-text">Campo Oblitario.</small>
                                     <small *ngIf="formLogin.controls.formLoginUsername.errors.pattern" id="formLoginUsernameHelp" class="form-text">Comenzar con May, Min 3, Max 30 y NO espacios.</small>

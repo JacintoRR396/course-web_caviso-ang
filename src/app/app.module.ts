@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+// Components
 import { AppHeaderComponent } from './components/header/app-header/app-header.component';
 import { AppHeaderSearchComponent } from './components/header/app-header-search/app-header-search.component';
 import { AppHeaderLoginDataComponent } from './components/header/app-header-login-data/app-header-login-data.component';
@@ -20,6 +21,9 @@ import { AppAsideComponent } from './components/main/aside/app-aside/app-aside.c
 import { AppFooterComponent } from './components/footer/app-footer/app-footer.component';
 
 import { Page404Component } from './components/admin/page404/page404.component';
+
+// Services
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +51,9 @@ import { Page404Component } from './components/admin/page404/page404.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    UserService
+  ],
   bootstrap: [
     AppComponent
   ]

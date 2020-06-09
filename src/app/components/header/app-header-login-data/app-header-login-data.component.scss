@@ -23,13 +23,14 @@
         justify-content: center;
     }
         .cdata-login__data > div{
-            width: 100%;
+            margin: 0 1rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
         }
 
     .cdata-login__btn button{
-        width: 128px;
-        height: 24px;
-        margin: 0.25rem 0 0.5rem 0;
+        margin: 0.5rem 0;
         font-size: 0.75rem;
     }
 
@@ -47,7 +48,11 @@
 
 /* Medium devices (tablets, 768px and up) */
 @media (max-width: 768px) {
-
+    .cdata-login__data > div{
+        margin: 0 0.1rem;
+        width: 100%;
+        flex-direction: column;
+    }
 }
 
  /*Small devices (landscape phones, 576px and up)*/

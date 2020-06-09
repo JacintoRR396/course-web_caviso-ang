@@ -5,15 +5,16 @@
     </div>
     <div class="cdata-login__data">
         <div>
-            <span>Nombre de Usuario :</span>
-            <strong class="badge badge-primary badge-pill">Balbi36</strong>
+            <span>Nombre:</span>
+            <strong class="badge badge-primary badge-pill">{{userLogin.username}}</strong>
         </div>
         <div>
-            <span>&Uacute;ltimo acceso :</span>
-            <strong class="badge badge-primary badge-pill">14/06/2020</strong>
+            <span>Tipo:</span>
+            <strong class="badge badge-primary badge-pill">{{userLogin.rol}}</strong>
         </div>
         <div>
-            <a href="">Datos Usuario</a>
+            <span>&Uacute;ltimo acceso:</span>
+            <strong class="badge badge-primary badge-pill">{{userLogin.lastAccess | date: 'dd-MM-yyyy'}}</strong>
         </div>
     </div>
     <div class="cdata-login__btn">

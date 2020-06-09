@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-header-login-data',
@@ -8,11 +10,18 @@ import { Component, OnInit, Input } from '@angular/core';
 export class AppHeaderLoginDataComponent implements OnInit {
 
   @Input() bLoginSon: boolean;
+  userLogin: User;
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.initUserLogin();
+  }
 
+  initUserLogin(){
+    if (typeof(this.userService.user.id) !== undefined){
+      this.userLogin = this.userService.user;
+    }
   }
 
 }
