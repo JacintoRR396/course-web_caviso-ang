@@ -34,10 +34,36 @@ export class UserService {
     this.users.push(user2);
   }
 
+  addUser(username: string, passwd: string, email: string){
+    const user: User = new User();
+    user.id = this.users.length;
+    user.username = username;
+    user.password = passwd;
+    user.email = email;
+    user.rol = EUserRol.USER;
+    user.lastAccess = new Date();
+    this.users.push(user);
+  }
+
+  existUserByUsername(username: string){
+    const res = this.users.find( (us) => {
+      return us.username.toLowerCase() === username.toLowerCase();
+    });
+    return res;
+  }
+
   existUserByUsernameAndPasswd(username: string, passwd: string){
     const res = this.users.find( (us) => {
       return us.username.toLowerCase() === username.toLowerCase()
         && us.password.toLowerCase() === passwd.toLowerCase();
+    });
+    return res;
+  }
+
+  existUserByUsernameAndEmail(username: string, email: string){
+    const res = this.users.find( (us) => {
+      return us.username.toLowerCase() === username.toLowerCase()
+        && us.email.toLowerCase() === email.toLowerCase();
     });
     return res;
   }

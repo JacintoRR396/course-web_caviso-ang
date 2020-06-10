@@ -71,15 +71,20 @@
         #carouselLogin form input{
             font-size: 0.75rem;
         }
-        .cform__errors{
+        .cform__errors, .cform__valid{
             height: 1.5rem;
         }
-        .cform__errors small{
+        .cform__errors small, .cform__valid small{
             display: block;
             width: 100%;
             margin-top: .25rem;
             font-size: 80%;
-            color: #dc3545;
+        }
+        .cform__errors small{
+            color: var(--color-error);
+        }
+        .cform__valid small{
+            color: var(--color-valid);
         }
 
     .button-container--center{

@@ -41,7 +41,7 @@
     <!-- COLLAPSE LOGIN -->
     <div id="collapseLogin" class="collapse bg-dark">
         <!-- CAROUSEL LOGIN -->
-        <div id="carouselLogin" class="carousel slide" data-ride="carousel" data-interval="false" *ngIf="!bLogin">
+        <div id="carouselLogin" class="carousel slide" data-ride="carousel" data-interval="false" *ngIf="!bLogado">
             <div class="carousel-inner">
                 <!-- CONTAINER FORGOTTEN PASSWORD -->
                 <div class="carousel-item">
@@ -57,6 +57,7 @@
                                 <input type="text" class="form-control form-control-sm" name="formForgotPassUsername" pattern="^[A-Z]{1}[a-zñA-Záéíóú0-9\\s/]{2,29}" autofocus required aria-describedby="formForgotPassUsernameHelp" formControlName="formForgotPassUsername" />
                                 <div *ngIf="formForgotten.controls.formForgotPassUsername.invalid" class="cform__errors">
                                     <small *ngIf="formForgotten.controls.formForgotPassUsername.errors.required" id="formForgotPassUsernameHelp" class="form-text">Campo Oblitario.</small>
+                                    <small *ngIf="formForgotten.controls.formForgotPassUsername.errors.minLength" id="formForgotPassUsernameHelp" class="form-text">Min 3 Caracteres.</small>
                                     <small *ngIf="formForgotten.controls.formForgotPassUsername.errors.pattern" id="formForgotPassUsernameHelp" class="form-text">Comenzar con May, Min 3, Max 30 y NO espacios.</small>
                                 </div>
                             </div>
@@ -72,21 +73,27 @@
                                 </div>
                             </div>
                         </div>
+                        <div *ngIf="bForgottenShowMsg && bForgottenValid" class="form-row cform__valid">
+                            <small class="form-text">Se ha mandado un email con la nueva contraseña.</small>
+                        </div>
+                        <div *ngIf="bForgottenShowMsg && !bForgottenValid" class="form-row cform__errors">
+                            <small class="form-text">Usuario y/o Email NO válidos.</small>
+                        </div>
                         <hr>
                         <div class="form-row">
                             <div class="form-group col-md-6 mb-2">
                                 <span class="form-control-sm">Has recordado la contraseña!!! </span>
-                                <a href="#" class="form-control-sm" data-target="#carouselLogin" data-slide-to="1">
+                                <a id="formForgotPass__linkLogin" href="#" class="form-control-sm" data-target="#carouselLogin" data-slide-to="1">
                                     Login
                                 </a>
                                 <br>
                                 <span class="form-control-sm">No tienes una cuenta!!! </span>
-                                <a href="#" class="form-control-sm" data-target="#carouselLogin" data-slide-to="2">
+                                <a id="formForgotPass__linkRegister" href="#" class="form-control-sm" data-target="#carouselLogin" data-slide-to="2">
                                     Registrarse
                                 </a>
                             </div>
                             <div class="form-group col-md-6 mb-2 button-container--center">
-                                <button type="submit" class="btn btn-primary btn-sm" (click)="submitFormForgotten()" [disabled]="!formForgotten.valid">Recuperar</button>
+                                <button type="submit" class="btn btn-primary btn-sm" (click)="submitFormForgotten($event)" [disabled]="!formForgotten.valid">Recuperar</button>
                             </div>
                         </div>
                     </form>
@@ -121,6 +128,12 @@
                                 </div>
                             </div>
                         </div>
+                        <div *ngIf="bLoginShowMsg && bLoginValid" class="form-row cform__valid">
+                            <small class="form-text">Login correcto.</small>
+                        </div>
+                        <div *ngIf="bLoginShowMsg && !bLoginValid" class="form-row cform__errors">
+                            <small class="form-text">Usuario y/o Contraseña NO válidos.</small>
+                        </div>
                         <hr>
                         <div class="form-row">
                             <div class="form-group col-md-6 mb-2">
@@ -129,7 +142,7 @@
                                 <a href="#" class="form-control-sm" data-target="#carouselLogin" data-slide-to="2">Registrarse</a>
                             </div>
                             <div class="form-group col-md-6 mb-2 button-container--center">
-                                <button type="submit" class="btn btn-primary btn-sm"  (click)="submitFormLogin()" [disabled]="!formLogin.valid">Acceder</button>
+                                <button type="submit" class="btn btn-primary btn-sm" (click)="submitFormLogin($event)" [disabled]="!formLogin.valid">Acceder</button>
                             </div>
                         </div>
                     </form>
@@ -138,23 +151,30 @@
                 <div class="carousel-item">
                     <img class="img-fluid rounded icon64" src="../../../assets/images/img_login/access_account.svg" alt="Login" title="Login">
                     <h2>Registrarse</h2>
-                    <form id="formRegister" class="was-validated" action="">
+                    <form id="formRegister" class="was-validated" action="" [formGroup]="formRegister">
                         <div class="form-row">
-                            <div class="form-group col-md-6 mb-0">
+                            <div class="form-group col-md-6 mb-1">
                                 <label class="col-form-label-sm mb-1" for="formRegisterUsername">
                                     <i class="fas fa-user"></i>
                                     Nombre de Usuario:
                                 </label>
-                                <input id="formRegisterUsername" class="form-control form-control-sm" type="text" name="formRegisterUsername"  pattern="^[A-Z]{1}[a-zñA-Záéíóú\\s/]{2,29}" autofocus required aria-describedby="formRegisterUsernameHelp"/>
-                                <small id="formRegisterUsernameHelp" class="form-text invalid-feedback">Min 3, Max 30 y comenzar con May.</small>
+                                <input type="text" class="form-control form-control-sm" name="formRegisterUsername"  pattern="^[A-Z]{1}[a-zñA-Záéíóú0-9\\s/]{2,29}" autofocus required aria-describedby="formRegisterUsernameHelp" formControlName="formRegisterUsername"/>
+                                <div *ngIf="formRegister.controls.formRegisterUsername.invalid" class="cform__errors">
+                                    <small *ngIf="formRegister.controls.formRegisterUsername.errors.required" id="formRegisterUsernameHelp" class="form-text">Campo Oblitario.</small>
+                                    <small *ngIf="formRegister.controls.formRegisterUsername.errors.minLength" id="formRegisterUsernameHelp" class="form-text">Min 3 Caracteres.</small>
+                                    <small *ngIf="formRegister.controls.formRegisterUsername.errors.pattern" id="formRegisterUsernameHelp" class="form-text">Comenzar con May, Min 3, Max 30 y NO espacios.</small>
+                                </div>
                             </div>
-                            <div class="form-group col-md-6 mb-0">
+                            <div class="form-group col-md-6 mb-1">
                                 <label class="col-form-label-sm mb-1" for="formRegisterEmail">
                                     <i class="fas fa-envelope"></i>
                                     Email:
                                 </label>
-                                <input id="formRegisterEmail" class="form-control form-control-sm" type="email" name="formRegisterEmail" required aria-describedby="formRegisterEmailHelp"/>
-                                <small id="formRegisterEmailHelp" class="form-text invalid-feedback">Formato de email válido.</small>
+                                <input type="email" class="form-control form-control-sm" name="formRegisterEmail" required aria-describedby="formRegisterEmailHelp" formControlName="formRegisterEmail" />
+                                <div *ngIf="formRegister.controls.formRegisterEmail.invalid" class="cform__errors">
+                                    <small *ngIf="formRegister.controls.formRegisterEmail.errors.required" id="formRegisterEmailHelp" class="form-text">Campo Oblitario.</small>
+                                    <small *ngIf="formRegister.controls.formRegisterEmail.errors.email" id="formRegisterEmailHelp" class="form-text">Formato de email válido.</small>
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
@@ -163,33 +183,47 @@
                                     <i class="fas fa-key"></i>
                                     Contraseña:
                                 </label>
-                                <input id="formRegisterPasswd" class="form-control form-control-sm" type="password" name="formRegisterPasswd" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,}$" required aria-describedby="formRegisterPasswdHelp"/>
-                                <small id="formRegisterPasswdHelp" class="form-text invalid-feedback">Al menos (1 May, 1 Min, 1 Num, 1 Símbolo) y NO espacios.</small>
+                                <input type="password" class="form-control form-control-sm" name="formRegisterPasswd" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,}$" required aria-describedby="formRegisterPasswdHelp" formControlName="formRegisterPasswd" />
+                                <div *ngIf="formRegister.controls.formRegisterPasswd.invalid" class="cform__errors">
+                                    <small *ngIf="formRegister.controls.formRegisterPasswd.errors.required" id="formRegisterPasswdHelp" class="form-text">Campo Oblitario.</small>
+                                    <small *ngIf="formRegister.controls.formRegisterPasswd.errors.minLength" id="formRegisterPasswdHelp" class="form-text">Min 8 Caracteres.</small>
+                                    <small *ngIf="formRegister.controls.formRegisterPasswd.errors.pattern" id="formRegisterPasswdHelp" class="form-text">Al menos (1 May, 1 Min, 1 Num, 1 Símbolo) y NO espacios.</small>
+                                </div>
                             </div>
                             <div class="form-group col-md-6 mb-1">
                                 <label class="col-form-label-sm mb-1" for="formRegisterPasswdRepeat">
                                     <i class="fas fa-key"></i>
                                     Repetir Contraseña:
                                 </label>
-                                <input id="formRegisterPasswdRepeat" class="form-control form-control-sm" type="password" name="formRegisterPasswdRepeat" required aria-describedby="formRegisterPasswdRepeatHelp"/>
-                                <small id="formRegisterPasswdRepeatHelp" class="form-text invalid-feedback">Al menos (1 May, 1 Min, 1 Num, 1 Símbolo) y NO espacios.</small>
+                                <input type="password" class="form-control form-control-sm" name="formRegisterPasswdConfirm" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,}$" required aria-describedby="formRegisterPasswdConfirmHelp" formControlName="formRegisterPasswdConfirm" />
+                                <div *ngIf="formRegister.controls.formRegisterPasswdConfirm.invalid" class="cform__errors">
+                                    <small *ngIf="formRegister.controls.formRegisterPasswdConfirm.errors.required" id="formRegisterPasswdConfirmHelp" class="form-text">Campo Oblitario.</small>
+                                    <small *ngIf="formRegister.controls.formRegisterPasswdConfirm.errors.minLength" id="formRegisterPasswdConfirmHelp" class="form-text">Min 8 Caracteres.</small>
+                                    <small *ngIf="formRegister.controls.formRegisterPasswdConfirm.errors.pattern" id="formRegisterPasswdConfirmHelp" class="form-text">Al menos (1 May, 1 Min, 1 Num, 1 Símbolo) y NO espacios.</small>
+                                </div>
                             </div>
+                        </div>
+                        <div *ngIf="bRegisterShowMsg && bRegisterValid" class="form-row cform__valid">
+                            <small class="form-text">Registro correcto.</small>
+                        </div>
+                        <div *ngIf="bRegisterShowMsg && !bRegisterValid" class="form-row cform__errors">
+                            <small class="form-text">Ya existe el nombre de usuario.</small>
                         </div>
                         <hr>
                         <div class="form-row">
                             <div class="form-group col-md-6 mb-2">
                                 <span class="form-control-sm">Has olvidado la contraseña!!! </span>
-                                <a href="#" class="form-control-sm" data-target="#carouselLogin" data-slide-to="0">
+                                <a id="formRegister__linkForgotten" href="#" class="form-control-sm" data-target="#carouselLogin" data-slide-to="0">
                                     Recuperar
                                 </a>
                                 <br>
                                 <span class="form-control-sm">Ya posees una cuenta!!! </span>
-                                <a href="#" class="form-control-sm" data-target="#carouselLogin" data-slide-to="1">
+                                <a id="formRegister__linkLogin" href="#" class="form-control-sm" data-target="#carouselLogin" data-slide-to="1">
                                     Login
                                 </a>
                             </div>
                             <div class="form-group col-md-6 mb-2 button-container--center">
-                                <button type="submit" class="btn btn-primary btn-sm">Registrarme</button>
+                                <button type="submit" class="btn btn-primary btn-sm" (click)="submitFormRegister($event)" [disabled]="!formRegister.valid">Registrarme</button>
                             </div>
                         </div>
                     </form>
@@ -197,6 +231,6 @@
             </div>
         </div>
         <!-- USER DATA LOGIN -->
-        <app-header-login-data [bLoginSon]="bLogin"></app-header-login-data>
+        <app-header-login-data [bLoginFather]="bLogado" (bLoginSon)="checkUserLoginSon($event)"></app-header-login-data>
     </div>
 </header>

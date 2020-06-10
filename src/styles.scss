@@ -6,6 +6,7 @@
     --bg-color-primary-comp: #1b1b2f;
     --bg-color-secondary: #dae1e7;
     --bg-color-secondary-comp: #8b8b8b;
+
     --color: white;
     --color-primary: #e43f5a;
     --color-primary-comp: #DC143C;
@@ -14,11 +15,16 @@
     --color-link: rgba(255,255,255,.5);
     --color-link-comp: rgba(255,255,255,.75);
     --color-special: #17a2b8;
+    --color-error: #dc3545;
+    --color-valid: #28a745;
+
     --font-title: 'Work Sans', sans-serif;
     --font-primary: 'Open Sans', sans-serif;
     --font-secondary: 'Open Sans Condensed', sans-serif;
+
     --padding-container: 0 0.5rem;
     --font-size-small: 0.75rem;
+
 }
 
 *{
