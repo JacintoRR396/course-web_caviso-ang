@@ -50,26 +50,26 @@
                     <form id="formForgotPass" class="was-validated" action="" [formGroup]="formForgotten">
                         <div class="form-row">
                             <div class="form-group col-sm-6 mb-1">
-                                <label class="col-form-label-sm mb-1" for="formForgotPassUsername">
+                                <label class="col-form-label-sm mb-1" for="formForgottenUsername">
                                     <i class="fas fa-user"></i>
                                     Nombre de Usuario:
                                 </label>
-                                <input type="text" class="form-control form-control-sm" name="formForgotPassUsername" pattern="^[A-Z]{1}[a-zñA-Záéíóú0-9\\s/]{2,29}" autofocus required aria-describedby="formForgotPassUsernameHelp" formControlName="formForgotPassUsername" />
-                                <div *ngIf="formForgotten.controls.formForgotPassUsername.invalid" class="cform__errors">
-                                    <small *ngIf="formForgotten.controls.formForgotPassUsername.errors.required" id="formForgotPassUsernameHelp" class="form-text">Campo Oblitario.</small>
-                                    <small *ngIf="formForgotten.controls.formForgotPassUsername.errors.minLength" id="formForgotPassUsernameHelp" class="form-text">Min 3 Caracteres.</small>
-                                    <small *ngIf="formForgotten.controls.formForgotPassUsername.errors.pattern" id="formForgotPassUsernameHelp" class="form-text">Comenzar con May, Min 3, Max 30 y NO espacios.</small>
+                                <input type="text" class="form-control form-control-sm" name="formForgottenUsername" pattern="^[A-Z]{1}[a-zñA-Záéíóú0-9\\s/]{2,29}" autofocus required aria-describedby="formForgottenUsernameHelp" formControlName="formForgottenUsername" />
+                                <div *ngIf="formForgotten.controls.formForgottenUsername.invalid" class="cform__errors">
+                                    <small *ngIf="formForgotten.controls.formForgottenUsername.errors.required" id="formForgottenUsernameHelp" class="form-text">Campo Oblitario.</small>
+                                    <small *ngIf="formForgotten.controls.formForgottenUsername.errors.minLength" id="formForgottenUsernameHelp" class="form-text">Min 3 Caracteres.</small>
+                                    <small *ngIf="formForgotten.controls.formForgottenUsername.errors.pattern" id="formForgottenUsernameHelp" class="form-text">Comenzar con May, Min 3, Max 30 y NO espacios.</small>
                                 </div>
                             </div>
                             <div class="form-group col-sm-6 mb-1">
-                                <label class="col-form-label-sm mb-1" for="formForgotPassEmail">
+                                <label class="col-form-label-sm mb-1" for="formForgottenEmail">
                                     <i class="fas fa-envelope"></i>
                                     Email:
                                 </label>
-                                <input type="email" class="form-control form-control-sm" name="formForgotPassEmail" required aria-describedby="formForgotPassEmailHelp" formControlName="formForgotPassEmail" />
-                                <div *ngIf="formForgotten.controls.formForgotPassEmail.invalid" class="cform__errors">
-                                    <small *ngIf="formForgotten.controls.formForgotPassEmail.errors.required" id="formForgotPassEmailHelp" class="form-text">Campo Oblitario.</small>
-                                    <small *ngIf="formForgotten.controls.formForgotPassEmail.errors.email" id="formForgotPassEmailHelp" class="form-text">Formato de email válido.</small>
+                                <input type="email" class="form-control form-control-sm" name="formForgottenEmail" required aria-describedby="formForgottenEmailHelp" formControlName="formForgottenEmail" />
+                                <div *ngIf="formForgotten.controls.formForgottenEmail.invalid" class="cform__errors">
+                                    <small *ngIf="formForgotten.controls.formForgottenEmail.errors.required" id="formForgottenEmailHelp" class="form-text">Campo Oblitario.</small>
+                                    <small *ngIf="formForgotten.controls.formForgottenEmail.errors.email" id="formForgottenEmailHelp" class="form-text">Formato de email válido.</small>
                                 </div>
                             </div>
                         </div>
@@ -77,7 +77,8 @@
                             <small class="form-text">Se ha mandado un email con la nueva contraseña.</small>
                         </div>
                         <div *ngIf="bForgottenShowMsg && !bForgottenValid" class="form-row cform__errors">
-                            <small class="form-text">Usuario y/o Email NO válidos.</small>
+                            <small *ngIf="!bForgottenUsernameValid" class="form-text">El usuario '{{formForgotten.value.formForgottenUsername}}' NO existe en la BDs.</small>
+                            <small *ngIf="!bForgottenEmailValid" class="form-text">El Correo del usuario '{{formForgotten.value.formForgottenUsername}}' NO es correcto.</small>
                         </div>
                         <hr>
                         <div class="form-row">
@@ -132,7 +133,8 @@
                             <small class="form-text">Login correcto.</small>
                         </div>
                         <div *ngIf="bLoginShowMsg && !bLoginValid" class="form-row cform__errors">
-                            <small class="form-text">Usuario y/o Contraseña NO válidos.</small>
+                            <small *ngIf="!bLoginUsernameValid" class="form-text">El usuario '{{formLogin.value.formLoginUsername}}' NO existe en la BDs.</small>
+                            <small *ngIf="!bLoginPasswdValid" class="form-text">La contraseña del usuario '{{formLogin.value.formLoginUsername}}' NO es correcta.</small>
                         </div>
                         <hr>
                         <div class="form-row">
@@ -158,7 +160,7 @@
                                     <i class="fas fa-user"></i>
                                     Nombre de Usuario:
                                 </label>
-                                <input type="text" class="form-control form-control-sm" name="formRegisterUsername"  pattern="^[A-Z]{1}[a-zñA-Záéíóú0-9\\s/]{2,29}" autofocus required aria-describedby="formRegisterUsernameHelp" formControlName="formRegisterUsername"/>
+                                <input type="text" class="form-control form-control-sm" name="formRegisterUsername" pattern="^[A-Z]{1}[a-zñA-Záéíóú0-9\\s/]{2,29}" autofocus required aria-describedby="formRegisterUsernameHelp" formControlName="formRegisterUsername"/>
                                 <div *ngIf="formRegister.controls.formRegisterUsername.invalid" class="cform__errors">
                                     <small *ngIf="formRegister.controls.formRegisterUsername.errors.required" id="formRegisterUsernameHelp" class="form-text">Campo Oblitario.</small>
                                     <small *ngIf="formRegister.controls.formRegisterUsername.errors.minLength" id="formRegisterUsernameHelp" class="form-text">Min 3 Caracteres.</small>
@@ -207,7 +209,8 @@
                             <small class="form-text">Registro correcto.</small>
                         </div>
                         <div *ngIf="bRegisterShowMsg && !bRegisterValid" class="form-row cform__errors">
-                            <small class="form-text">Ya existe el nombre de usuario.</small>
+                            <small *ngIf="!bRegisterUsernameValid" class="form-text">El usuario '{{formRegister.value.formRegisterUsername}}' YA existe en la BDs.</small>
+                            <small *ngIf="!bRegisterPasswdConfirmValid" class="form-text">NO coinciden las contraseñas.</small>
                         </div>
                         <hr>
                         <div class="form-row">

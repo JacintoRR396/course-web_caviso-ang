@@ -15,32 +15,17 @@ export class UserService {
   }
 
   createUsers(){
-    const user1: User = new User();
-    user1.id = 1;
-    user1.username = 'Balbino36';
-    user1.password = 'Balbi@36';
-    user1.email = 'balbino36@gmail.com';
-    user1.rol = EUserRol.ADMIN;
-    user1.lastAccess = new Date();
-    this.users.push(user1);
-
-    const user2: User = new User();
-    user2.id = 2;
-    user2.username = 'Rocio30';
-    user2.password = 'Rocio@30';
-    user2.email = 'Ro30@gmail.com';
-    user2.rol = EUserRol.USER;
-    user2.lastAccess = new Date();
-    this.users.push(user2);
+    this.addUser('Balbino36', 'Balbi@36', 'balbino36@gmail.com', EUserRol.ADMIN);
+    this.addUser('Rocio30', 'Rocio@30', 'Ro30@gmail.com');
   }
 
-  addUser(username: string, passwd: string, email: string){
+  addUser(username: string, passwd: string, email: string, rol?: EUserRol){
     const user: User = new User();
     user.id = this.users.length;
     user.username = username;
     user.password = passwd;
     user.email = email;
-    user.rol = EUserRol.USER;
+    user.rol = (rol) ? rol : EUserRol.USER;
     user.lastAccess = new Date();
     this.users.push(user);
   }
