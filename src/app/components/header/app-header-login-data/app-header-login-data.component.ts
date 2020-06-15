@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/models/user';
+import { IUser } from 'src/app/models/iuser';
 
 @Component({
   selector: 'app-header-login-data',
@@ -11,7 +11,7 @@ export class AppHeaderLoginDataComponent implements OnInit, OnChanges {
 
   @Input() bLoginFather: boolean;
   @Output() bLoginSon = new EventEmitter<boolean>();
-  userLogin: User;
+  userLogin: IUser;
 
   constructor(private userService: UserService) { }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IMember } from 'src/app/models/imember';
+import { IPersonMember } from 'src/app/models/iperson-member';
 
 @Component({
   selector: 'app-section-member-details',
@@ -10,7 +10,7 @@ import { IMember } from 'src/app/models/imember';
 export class AppSectionMemberDetailsComponent implements OnInit {
 
   id: number;
-  member: IMember;
+  member: IPersonMember;
 
   constructor(private ruta: ActivatedRoute) { }
 

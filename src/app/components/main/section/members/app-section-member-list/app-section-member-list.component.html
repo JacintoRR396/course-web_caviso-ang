@@ -2,7 +2,7 @@
     <h4>Miembros</h4>
     <div class="list__cdata list-group" id="list-data-tab" role="tablist">
         <!-- List Elements -->
-        <a class="list__cdata__item list-group-item list-group-item-action rounded" [routerLink]="['/miembros/detalle', memberFor.id]" id="list-show-first" (click)="onEvent($event)" *ngFor="let memberFor of members">
+        <a *ngFor="let memberFor of personMembers" class="list__cdata__item list-group-item list-group-item-action rounded" [routerLink]="['/miembros/detalle', memberFor.id]" id="list-show-first" (click)="onEvent($event)">
             <div class="row">
                 <div class="list__cdata__item__cimg col-sm-2">
                     <img class="img-fluid rounded icon48" [src]="memberFor.pathImage" alt="Avatar" title="Avatar">
@@ -16,15 +16,15 @@
                     <div class="row">
                         <div class="col-3">
                             <span>Socio :</span>
-                            <strong class="badge badge-primary badge-pill">12</strong>
+                            <strong class="badge badge-primary badge-pill">{{memberFor.numMember}}</strong>
                         </div>
                         <div class="col-5">
                             <span>Categoria :</span>
-                            <strong class="badge badge-primary badge-pill">Benjamin</strong>
+                            <strong class="badge badge-primary badge-pill">{{memberFor.eCategory}}</strong>
                         </div>
                         <div class="col-4">
                             <span>Carreras :</span>
-                            <strong class="badge badge-primary badge-pill">25</strong>
+                            <strong class="badge badge-primary badge-pill">{{memberFor.numRaces}}</strong>
                         </div>
                     </div>
                 </div>

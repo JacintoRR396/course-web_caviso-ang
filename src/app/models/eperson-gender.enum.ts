@@ -1,4 +1,4 @@
-export enum EUserGender {
+export enum EPersonGender {
     MALE = 'Masculino',
     M = 'M',
     FEMALE = 'Femenino',

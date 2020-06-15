@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import { IUser } from 'src/app/models/iuser';
 import { User } from 'src/app/models/user';
 
 interface MenuItem{
@@ -51,7 +52,7 @@ export class AppHeaderComponent implements OnInit {
   bRegisterPasswdConfirmValid: boolean;
 
   bLogado: boolean;
-  userLogin: User;
+  userLogin: IUser;
 
   constructor(private formBuilder: FormBuilder, private userService: UserService) { }
 
@@ -114,7 +115,7 @@ export class AppHeaderComponent implements OnInit {
       if (this.formForgotten.valid){
         this.bForgottenShowMsg = true;
         // Search if user exists by username
-        let userForgotten: User = this.userService.existUserByUsername(
+        let userForgotten: IUser = this.userService.existUserByUsername(
           this.formForgotten.value.formForgottenUsername);
         this.bForgottenUsernameValid = typeof(userForgotten) !== 'undefined';
         if (this.bForgottenUsernameValid){
@@ -290,7 +291,7 @@ export class AppHeaderComponent implements OnInit {
       if (this.formRegister.valid){
         this.bRegisterShowMsg = true;
         // Search if user exists by username
-        const userRegister: User = this.userService.existUserByUsername(
+        const userRegister: IUser = this.userService.existUserByUsername(
           this.formRegister.value.formRegisterUsername);
         this.bRegisterUsernameValid = typeof(userRegister) === 'undefined';
         if (this.bRegisterUsernameValid){
