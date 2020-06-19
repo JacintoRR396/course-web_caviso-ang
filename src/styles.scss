@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+
 :root {
     --bg-color: #f4f4f4;
     --bg-color-primary: #162447;
@@ -18,12 +24,15 @@
     --color-error: #dc3545;
     --color-valid: #28a745;
 
-    --font-title: 'Work Sans', sans-serif;
+    --font-title: 'Roboto Slab', serif;
     --font-primary: 'Open Sans', sans-serif;
-    --font-secondary: 'Open Sans Condensed', sans-serif;
+    --font-secondary: 'Roboto', sans-serif;
+    --font-nav: 'Montserrat', sans-serif;
 
     --padding-container: 0 0.5rem;
     --font-size-small: 0.75rem;
+
+    --border-top: 0.1rem inset white;
 
 }
 
@@ -51,6 +60,11 @@ body{
 /* TAGS */
 h1, h2, h3, h4, h5, h6{
     color: var(--color-primary);
+    font-family: var(--font-title);
+}
+
+nav{
+    font-family: var(--font-nav);
 }
 
 a{
@@ -63,7 +77,7 @@ a{
         text-decoration: none;
     }
 
-strong{
+strong, em{
     text-shadow: 2px 2px 3px black;
 }
 span{
@@ -85,7 +99,32 @@ hr{
     margin: 0.5rem auto;
 }
 
+img{
+    max-width: 100%; //responsive;
+}
+
 /* CLASSES */
+.section-back{
+    border-radius: 0.5rem;
+    transition: all 1s;
+}
+.section-back:hover{
+    background-color: black;
+    border: 0.2rem ridge var(--bg-color-primary);
+}
+
+.img-link{
+    border-bottom: 1px solid var(--color-primary);
+    transition: all 1s;
+}
+.img-link:hover{
+    background-color: var(--color-link-comp) !important;
+    border-bottom-color: var(--color-secondary);
+    transform: scale(1.1);
+}
+.img-link:active{
+    transform: scale(0.8);
+}
 .icon32{
     margin: 5px;
     width: 32px;
@@ -123,7 +162,7 @@ hr{
 }
 
 .main-container{
-    border-top: 0.1rem inset white;
+    border-top: var(--border-top);
     margin: 0 auto;
     padding: 0.5rem;
     display: flex;
@@ -145,14 +184,6 @@ hr{
     .aside-container{
         margin: 0 0 0 0.15rem;
         width: 25%;
-    }
-
-footer{
-    border-top: 0.1rem inset white;
-    font-size: var(--font-size-small);
-}
-    .footer-container{
-        padding: 0;
     }
 
 
