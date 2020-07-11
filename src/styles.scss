@@ -7,20 +7,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
 
 :root {
-    --bg-color: #f4f4f4;
-    --bg-color-primary: #162447;
-    --bg-color-primary-comp: #1b1b2f;
-    --bg-color-secondary: #dae1e7;
-    --bg-color-secondary-comp: #8b8b8b;
+    --bg-color: #fafafa;
+    --bg-color-comp: #f9f9f9;
+    --bg-color-primary: #1d242c;
+    --bg-color-primary-comp: #2a343f;
+    --bg-color-secondary: #828487;
+    --bg-color-secondary-comp: #6e6f72;
 
     --color: white;
     --color-primary: #e43f5a;
-    --color-primary-comp: #DC143C;
+    --color-primary-comp: #eb0101;
     --color-secondary: #536DFE;
     --color-secondary-comp: #6A5ACD;
     --color-link: rgba(255,255,255,.5);
-    --color-link-comp: rgba(255,255,255,.75);
-    --color-special: #17a2b8;
+    --color-link-comp: rgba(255,255,255,.85);
+    --color-special: #00546b;
     --color-error: #dc3545;
     --color-valid: #28a745;
 
@@ -29,6 +30,7 @@
     --font-secondary: 'Roboto', sans-serif;
     --font-nav: 'Montserrat', sans-serif;
 
+    --min-width-mobile: 320px;
     --padding-container: 0 0.5rem;
     --font-size-small: 0.75rem;
 
@@ -36,6 +38,7 @@
 
 }
 
+/*** -------------- GENERIC -------------- ***/
 *{
     color: var(--color);
     margin: 0;
@@ -50,14 +53,13 @@
 body{
     min-width: 320px;
     max-width: 1280px;
+    min-height: 100vh;
     margin: 0 auto;
     width: 95%;
     font-family: var(--font-primary);
 }
 
-
-/*** -------------- COMMONS -------------- ***/
-/* TAGS */
+/*** -------------- TAGS -------------- ***/
 h1, h2, h3, h4, h5, h6{
     color: var(--color-primary);
     font-family: var(--font-title);
@@ -65,6 +67,10 @@ h1, h2, h3, h4, h5, h6{
 
 nav{
     font-family: var(--font-nav);
+}
+ul{
+    list-style: none;
+    display: inherit;
 }
 
 a{
@@ -86,6 +92,9 @@ span{
     text-shadow: 1px 1px 2px var(--color-secondary);
     padding-right: 0.25rem;
 }
+samp{
+    text-align: center;
+}
 
 i{
     color: var(--bg-color-secondary);
@@ -103,7 +112,8 @@ img{
     max-width: 100%; //responsive;
 }
 
-/* CLASSES */
+/*** -------------- CLASSES -------------- ***/
+/* BACKGROUND */
 .section-back{
     border-radius: 0.5rem;
     transition: all 1s;
@@ -113,18 +123,7 @@ img{
     border: 0.2rem ridge var(--bg-color-primary);
 }
 
-.img-link{
-    border-bottom: 1px solid var(--color-primary);
-    transition: all 1s;
-}
-.img-link:hover{
-    background-color: var(--color-link-comp) !important;
-    border-bottom-color: var(--color-secondary);
-    transform: scale(1.1);
-}
-.img-link:active{
-    transform: scale(0.8);
-}
+/* IMAGAES */
 .icon32{
     margin: 5px;
     width: 32px;
@@ -139,6 +138,20 @@ img{
     margin: 0rem auto;
     width: 64px;
     height: 64px;
+}
+.img-link{
+    margin: 0.5rem;
+    border-radius: 0.25rem;
+    background-color: var(--color-link);
+    transition-property: background-color, transform;
+    transition-duration: 1s, 0.25s;
+}
+.img-link:hover{
+    background-color: var(--color-link-comp) !important;
+    transform: scale(1.1);
+}
+.img-link:active{
+    transform: scale(0.8);
 }
 
 /* ANIMATES */
