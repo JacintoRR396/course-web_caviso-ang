@@ -1,239 +1,67 @@
-<header class="header-main-container container-fluid sticky-top">
-    <!-- MAIN NAV -->
-    <nav class="nav-main navbar navbar-expand-md bg-dark navbar-dark">
-        <!-- Brand -->
-        <a class="nav-main__brand navbar-brand" href="/">
-            <h1><abbr title="Club">C</abbr><abbr title="Atletismo">A</abbr> Viso</h1>
-        </a>
-        <!-- Toggler/collapsibe Button -->
-        <button class="nav-main__toggler navbar-toggler navbar-toggler-right bg-primary font-weight-bold text-white rounded" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <!-- Navbar links -->
-        <div id="navbarNav" class="nav-main__cnav navbar-collapse collapse">
-            <ul class="nav-main__cnav__ul navbar-nav mr-auto col-ms">
-                <li class="nav-item" *ngFor="let menuItemFor of menuItems">
-                    <a class="nav-link" [routerLink]="menuItemFor.path" routerLinkActive="active" [routerLinkActiveOptions]="{ exact : true}">{{menuItemFor.name}}</a>
+<header class="header-main">
+    <!-- Header Container -->
+    <div class="header-main__container">
+        <!-- BRAND -->
+        <div class="brand">
+            <a class="brand__link" href="/">
+                <h1><abbr title="Club">C</abbr><abbr title="Atletismo">A</abbr> Viso</h1>
+            </a>
+        </div>
+        <!-- MAIN NAV -->
+        <nav class="nav-main">
+            <!-- Burguer Menu -->
+            <div class="nav-main__burguer">
+                <img class="nav-main__burguer-icon" src="../../../../assets/images/img_web/menu-round-30.png"/>
+            </div>
+            <!-- Navbar links -->
+            <ul class="nav-main__list">
+                <li class="nav-main__item" *ngFor="let menuItemFor of menuItems">
+                    <a class="nav-main__item-link link-effect-color link-effect-underground" [routerLink]="menuItemFor.path" routerLinkActive="active" [routerLinkActiveOptions]="{ exact : true}">{{menuItemFor.name}}</a>
                 </li>
-                <!-- Dropdown -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Con&oacute;cenos</a>
-                    <div class="navbarNav-how dropdown-menu bg-dark">
-                        <a class="dropdown-item text-secondary" routerLink="/club">El Club</a>
-                        <a class="dropdown-item text-secondary" routerLink="/junta">La Junta Directiva</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-secondary" routerLink="/contacto">Contacto</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-secondary" routerLink="/registro">Ap&uacute;tate</a>
+                <li class="nav-main__item nav-main__item--subitem">
+                    <a class="nav-main__item-link link-effect-underground link-effect-color">
+                        Con&oacute;cenos
+                        <i class="fas fa-angle-down"></i>
+                    </a>
+                    <div class="nav-main__subitem">
+                        <a class="nav-main__subitem-link link-effect-color" routerLink="/club">El Club</a>
+                        <a class="nav-main__subitem-link link-effect-color" routerLink="/junta">Junta Directiva</a>
+                        <div class="item-divider"></div>
+                        <a class="nav-main__subitem-link link-effect-color" routerLink="/contacto">Contacto</a>
+                        <div class="item-divider"></div>
+                        <a class="nav-main__subitem-link link-effect-color" routerLink="/registro">Ap&uacute;tate</a>
                     </div>
                 </li>
             </ul>
-            <!-- Search Form -->
-            <app-header-search></app-header-search>
-            <!-- Login -->
-            <div class="nav-main__clogin col-ms">
-                <a href="#collapseLogin" data-toggle="collapse" aria-controls="collapseLogin" aria-expanded="false" role="button">
-                    <img class="img-fluid icon32" src="../../../assets/images/img_login/login.svg" alt="Login" title="Login">
-                </a>
+        </nav>
+        <!-- SERACH -->
+        <div class="search-main">
+            <div class="search-main__btn">
+                <i class="fas fa-search search-main__btn-icon link-effect-color"></i>
             </div>
-        </div>
-    </nav>
-    <!-- COLLAPSE LOGIN -->
-    <div id="collapseLogin" class="collapse bg-dark">
-        <!-- CAROUSEL LOGIN -->
-        <div id="carouselLogin" class="carousel slide" data-ride="carousel" data-interval="false" *ngIf="!bLogado">
-            <div class="carousel-inner">
-                <!-- CONTAINER FORGOTTEN PASSWORD -->
-                <div class="carousel-item">
-                    <img class="img-fluid rounded icon64" src="../../../assets/images/img_login/forgot_password.svg" alt="Forgot Pass" title="Recuperar Credenciales">
-                    <h2>Contraseña</h2>
-                    <form id="formForgotPass" class="was-validated" action="" [formGroup]="formForgotten">
-                        <div class="form-row">
-                            <div class="form-group col-sm-6 mb-1">
-                                <label class="col-form-label-sm mb-1" for="formForgottenUsername">
-                                    <i class="fas fa-user"></i>
-                                    Nombre de Usuario:
-                                </label>
-                                <input type="text" class="form-control form-control-sm" name="formForgottenUsername" pattern="^[A-Z]{1}[a-zñA-Záéíóú0-9\\s/]{2,29}" autofocus required aria-describedby="formForgottenUsernameHelp" formControlName="formForgottenUsername" />
-                                <div *ngIf="formForgotten.controls.formForgottenUsername.invalid" class="cform__errors">
-                                    <small *ngIf="formForgotten.controls.formForgottenUsername.errors.required" id="formForgottenUsernameHelp" class="form-text">Campo Oblitario.</small>
-                                    <small *ngIf="formForgotten.controls.formForgottenUsername.errors.minLength" id="formForgottenUsernameHelp" class="form-text">Min 3 Caracteres.</small>
-                                    <small *ngIf="formForgotten.controls.formForgottenUsername.errors.pattern" id="formForgottenUsernameHelp" class="form-text">Comenzar con May, Min 3, Max 30 y NO espacios.</small>
-                                </div>
-                            </div>
-                            <div class="form-group col-sm-6 mb-1">
-                                <label class="col-form-label-sm mb-1" for="formForgottenEmail">
-                                    <i class="fas fa-envelope"></i>
-                                    Email:
-                                </label>
-                                <input type="email" class="form-control form-control-sm" name="formForgottenEmail" required aria-describedby="formForgottenEmailHelp" formControlName="formForgottenEmail" />
-                                <div *ngIf="formForgotten.controls.formForgottenEmail.invalid" class="cform__errors">
-                                    <small *ngIf="formForgotten.controls.formForgottenEmail.errors.required" id="formForgottenEmailHelp" class="form-text">Campo Oblitario.</small>
-                                    <small *ngIf="formForgotten.controls.formForgottenEmail.errors.email" id="formForgottenEmailHelp" class="form-text">Formato de email válido.</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div *ngIf="bForgottenShowMsg && bForgottenValid" class="form-row cform__valid">
-                            <small class="form-text">Se ha mandado un email con la nueva contraseña.</small>
-                        </div>
-                        <div *ngIf="bForgottenShowMsg && !bForgottenValid" class="form-row cform__errors">
-                            <small *ngIf="!bForgottenUsernameValid" class="form-text">El usuario '{{formForgotten.value.formForgottenUsername}}' NO existe en la BDs.</small>
-                            <small *ngIf="!bForgottenEmailValid" class="form-text">El Correo del usuario '{{formForgotten.value.formForgottenUsername}}' NO es correcto.</small>
-                        </div>
-                        <hr>
-                        <div class="form-row">
-                            <div class="form-group col-md-6 mb-2">
-                                <span class="form-control-sm">Has recordado la contraseña!!! </span>
-                                <a id="formForgotPass__linkLogin" href="#" class="form-control-sm" data-target="#carouselLogin" data-slide-to="1">
-                                    Login
-                                </a>
-                                <br>
-                                <span class="form-control-sm">No tienes una cuenta!!! </span>
-                                <a id="formForgotPass__linkRegister" href="#" class="form-control-sm" data-target="#carouselLogin" data-slide-to="2">
-                                    Registrarse
-                                </a>
-                            </div>
-                            <div class="form-group col-md-6 mb-2 button-container--center">
-                                <button type="submit" class="btn btn-primary btn-sm" (click)="submitFormForgotten($event)" [disabled]="!formForgotten.valid">Recuperar</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <!-- CONTAINER ACCESS LOGIN -->
-                <div class="carousel-item active">
-                    <img class="img-fluid rounded icon64" src="../../../assets/images/img_login/secure_login.svg" alt="Login" title="Login">
-                    <h2>Login</h2>
-                    <form id="formLogin" class="was-validated" action="" [formGroup]="formLogin">
-                        <div class="form-row">
-                            <div class="form-group col-sm-6 mb-1">
-                                <label class="col-form-label-sm mb-1" for="formLoginUsername">
-                                    <i class="fas fa-user"></i>
-                                    Nombre de Usuario:
-                                </label>
-                                <input type="text" class="form-control form-control-sm" name="formLoginUsername" pattern="^[A-Z]{1}[a-zñA-Záéíóú0-9\\s/]{2,29}" autofocus required aria-describedby="formLoginUsernameHelp" formControlName="formLoginUsername" />
-                                <div *ngIf="formLogin.controls.formLoginUsername.invalid" class="cform__errors">
-                                    <small *ngIf="formLogin.controls.formLoginUsername.errors.required" id="formLoginUsernameHelp" class="form-text">Campo Oblitario.</small>
-                                    <small *ngIf="formLogin.controls.formLoginUsername.errors.pattern" id="formLoginUsernameHelp" class="form-text">Comenzar con May, Min 3, Max 30 y NO espacios.</small>
-                                </div>
-                            </div>
-                            <div class="form-group col-sm-6 mb-1">
-                                <label class="col-form-label-sm mb-1" for="formLoginPasswd">
-                                    <i class="fas fa-key"></i>
-                                    Contraseña:
-                                </label>
-                                <input type="password" class="form-control form-control-sm" name="formLoginPasswd" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\S+$).{8,}$" required aria-describedby="formLoginPasswdHelp" formControlName="formLoginPasswd" />
-                                <div *ngIf="formLogin.controls.formLoginPasswd.invalid" class="cform__errors">
-                                    <small *ngIf="formLogin.controls.formLoginPasswd.errors.required" id="formLoginPasswdHelp" class="form-text">Campo Oblitario.</small>
-                                    <small *ngIf="formLogin.controls.formLoginPasswd.errors.minLength" id="formLoginPasswdHelp" class="form-text">Min 8 Caracteres.</small>
-                                    <small *ngIf="formLogin.controls.formLoginPasswd.errors.pattern" id="formLoginPasswdHelp" class="form-text">Al menos (1 May, 1 Min, 1 Num, 1 Símbolo) y NO espacios.</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div *ngIf="bLoginShowMsg && bLoginValid" class="form-row cform__valid">
-                            <small class="form-text">Login correcto.</small>
-                        </div>
-                        <div *ngIf="bLoginShowMsg && !bLoginValid" class="form-row cform__errors">
-                            <small *ngIf="!bLoginUsernameValid" class="form-text">El usuario '{{formLogin.value.formLoginUsername}}' NO existe en la BDs.</small>
-                            <small *ngIf="!bLoginPasswdValid" class="form-text">La contraseña del usuario '{{formLogin.value.formLoginUsername}}' NO es correcta.</small>
-                        </div>
-                        <hr>
-                        <div class="form-row">
-                            <div class="form-group col-md-6 mb-2">
-                                <a href="#" class="form-control-sm" data-target="#carouselLogin" data-slide-to="0">¿Has olvidado la contraseña?</a>
-                                <br>
-                                <a href="#" class="form-control-sm" data-target="#carouselLogin" data-slide-to="2">Registrarse</a>
-                            </div>
-                            <div class="form-group col-md-6 mb-2 button-container--center">
-                                <button type="submit" class="btn btn-primary btn-sm" (click)="submitFormLogin($event)" [disabled]="!formLogin.valid">Acceder</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <!-- CONTAINER REGISTER -->
-                <div class="carousel-item">
-                    <img class="img-fluid rounded icon64" src="../../../assets/images/img_login/access_account.svg" alt="Login" title="Login">
-                    <h2>Registrarse</h2>
-                    <form id="formRegister" class="was-validated" action="" [formGroup]="formRegister">
-                        <div class="form-row">
-                            <div class="form-group col-md-6 mb-1">
-                                <label class="col-form-label-sm mb-1" for="formRegisterUsername">
-                                    <i class="fas fa-user"></i>
-                                    Nombre de Usuario:
-                                </label>
-                                <input type="text" class="form-control form-control-sm" name="formRegisterUsername" pattern="^[A-Z]{1}[a-zñA-Záéíóú0-9\\s/]{2,29}" autofocus required aria-describedby="formRegisterUsernameHelp" formControlName="formRegisterUsername"/>
-                                <div *ngIf="formRegister.controls.formRegisterUsername.invalid" class="cform__errors">
-                                    <small *ngIf="formRegister.controls.formRegisterUsername.errors.required" id="formRegisterUsernameHelp" class="form-text">Campo Oblitario.</small>
-                                    <small *ngIf="formRegister.controls.formRegisterUsername.errors.minLength" id="formRegisterUsernameHelp" class="form-text">Min 3 Caracteres.</small>
-                                    <small *ngIf="formRegister.controls.formRegisterUsername.errors.pattern" id="formRegisterUsernameHelp" class="form-text">Comenzar con May, Min 3, Max 30 y NO espacios.</small>
-                                </div>
-                            </div>
-                            <div class="form-group col-md-6 mb-1">
-                                <label class="col-form-label-sm mb-1" for="formRegisterEmail">
-                                    <i class="fas fa-envelope"></i>
-                                    Email:
-                                </label>
-                                <input type="email" class="form-control form-control-sm" name="formRegisterEmail" required aria-describedby="formRegisterEmailHelp" formControlName="formRegisterEmail" />
-                                <div *ngIf="formRegister.controls.formRegisterEmail.invalid" class="cform__errors">
-                                    <small *ngIf="formRegister.controls.formRegisterEmail.errors.required" id="formRegisterEmailHelp" class="form-text">Campo Oblitario.</small>
-                                    <small *ngIf="formRegister.controls.formRegisterEmail.errors.email" id="formRegisterEmailHelp" class="form-text">Formato de email válido.</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6 mb-1">
-                                <label class="col-form-label-sm mb-1" for="formRegisterPasswd">
-                                    <i class="fas fa-key"></i>
-                                    Contraseña:
-                                </label>
-                                <input type="password" class="form-control form-control-sm" name="formRegisterPasswd" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,}$" required aria-describedby="formRegisterPasswdHelp" formControlName="formRegisterPasswd" />
-                                <div *ngIf="formRegister.controls.formRegisterPasswd.invalid" class="cform__errors">
-                                    <small *ngIf="formRegister.controls.formRegisterPasswd.errors.required" id="formRegisterPasswdHelp" class="form-text">Campo Oblitario.</small>
-                                    <small *ngIf="formRegister.controls.formRegisterPasswd.errors.minLength" id="formRegisterPasswdHelp" class="form-text">Min 8 Caracteres.</small>
-                                    <small *ngIf="formRegister.controls.formRegisterPasswd.errors.pattern" id="formRegisterPasswdHelp" class="form-text">Al menos (1 May, 1 Min, 1 Num, 1 Símbolo) y NO espacios.</small>
-                                </div>
-                            </div>
-                            <div class="form-group col-md-6 mb-1">
-                                <label class="col-form-label-sm mb-1" for="formRegisterPasswdRepeat">
-                                    <i class="fas fa-key"></i>
-                                    Repetir Contraseña:
-                                </label>
-                                <input type="password" class="form-control form-control-sm" name="formRegisterPasswdConfirm" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,}$" required aria-describedby="formRegisterPasswdConfirmHelp" formControlName="formRegisterPasswdConfirm" />
-                                <div *ngIf="formRegister.controls.formRegisterPasswdConfirm.invalid" class="cform__errors">
-                                    <small *ngIf="formRegister.controls.formRegisterPasswdConfirm.errors.required" id="formRegisterPasswdConfirmHelp" class="form-text">Campo Oblitario.</small>
-                                    <small *ngIf="formRegister.controls.formRegisterPasswdConfirm.errors.minLength" id="formRegisterPasswdConfirmHelp" class="form-text">Min 8 Caracteres.</small>
-                                    <small *ngIf="formRegister.controls.formRegisterPasswdConfirm.errors.pattern" id="formRegisterPasswdConfirmHelp" class="form-text">Al menos (1 May, 1 Min, 1 Num, 1 Símbolo) y NO espacios.</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div *ngIf="bRegisterShowMsg && bRegisterValid" class="form-row cform__valid">
-                            <small class="form-text">Registro correcto.</small>
-                        </div>
-                        <div *ngIf="bRegisterShowMsg && !bRegisterValid" class="form-row cform__errors">
-                            <small *ngIf="!bRegisterUsernameValid" class="form-text">El usuario '{{formRegister.value.formRegisterUsername}}' YA existe en la BDs.</small>
-                            <small *ngIf="!bRegisterPasswdConfirmValid" class="form-text">NO coinciden las contraseñas.</small>
-                        </div>
-                        <hr>
-                        <div class="form-row">
-                            <div class="form-group col-md-6 mb-2">
-                                <span class="form-control-sm">Has olvidado la contraseña!!! </span>
-                                <a id="formRegister__linkForgotten" href="#" class="form-control-sm" data-target="#carouselLogin" data-slide-to="0">
-                                    Recuperar
-                                </a>
-                                <br>
-                                <span class="form-control-sm">Ya posees una cuenta!!! </span>
-                                <a id="formRegister__linkLogin" href="#" class="form-control-sm" data-target="#carouselLogin" data-slide-to="1">
-                                    Login
-                                </a>
-                            </div>
-                            <div class="form-group col-md-6 mb-2 button-container--center">
-                                <button type="submit" class="btn btn-primary btn-sm" (click)="submitFormRegister($event)" [disabled]="!formRegister.valid">Registrarme</button>
-                            </div>
-                        </div>
-                    </form>
+            <div class="search-main__container container-popup">
+                <i class="fas fa-filter search-main__container-icon-filter link-effect-color">
+                    <select class="search-main__container-tooltips">
+                        <option value="member">Miembros</option>
+                        <option value="race">Carreras</option>
+                        <option value="notice">Noticias</option>
+                        <option value="train">Entrenos</option>
+                    </select>
+                </i>
+                <input class="search-main__container-text" type="text" />
+                <div class="search-main__container-result">
+                    JR2
                 </div>
             </div>
         </div>
-        <!-- USER DATA LOGIN -->
-        <app-header-login-data [bLoginFather]="bLogado" (bLoginSon)="checkUserLoginSon($event)"></app-header-login-data>
+        <!-- LOGIN -->
+        <div class="login-main">
+            <div class="login-main__btn">
+                <i class="fas fa-user login-main__btn-icon link-effect-color"></i>
+            </div>
+            <div class="login-main__container">
+
+            </div>
+        </div>
     </div>
 </header>
