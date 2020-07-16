@@ -1,6 +1,23 @@
-<div class="cform-search col-ms">
-    <form class="cform-search__form form-inline col-md mt-2 mt-md-0 was-validated" action="" [formGroup]="formSearch">
-        <input type="text" class="cform-search__form__input form-control form-control-sm mr-sm-1" placeholder="..." name="formSearchValue" pattern="^[a-zñA-Záéíóú\\s/]{2,}" required aria-label="Search" data-toggle="tooltip" data-placement="bottom" title="Introduzca el valor a buscar" formControlName="formSearchValue" />
-        <button type="submit" class="cform-search__form__btn btn btn-outline-info btn-sm my-2 my-sm-0" (click)="searchBtn()" [disabled]="!formSearch.valid">Buscar</button>
-    </form>
+<div class="search-main">
+    <div class="search-main__btn">
+        <i class="fas fa-search search-main__btn-icon link-effect-color"></i>
+    </div>
+    <div class="search-main__container container-popup">
+        <i class="fas fa-filter search-main__container-icon-filter link-effect-color">
+            <select class="search-main__container-tooltips-filter">
+                <option value="member">Miembros</option>
+                <option value="race">Carreras</option>
+                <option value="notice">Noticias</option>
+                <option value="train">Entrenos</option>
+            </select>
+        </i>
+        <form class="search-main__container-form" action="" [formGroup]="formSearch">
+            <input type="text" class="search-main__container-form-text" placeholder="..." name="formSearchValue" pattern="^[a-zñA-Záéíóú\\s/]{2,}"
+                required title="Introduzca el valor a buscar" formControlName="formSearchValue" />
+            <button type="submit" class="search-main__container-form-btn" (click)="searchBtn()" [disabled]="!formSearch.valid">Buscar</button>
+        </form>
+        <div class="search-main__container-result">
+            JR2
+        </div>
+    </div>
 </div>

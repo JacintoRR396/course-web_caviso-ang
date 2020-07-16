@@ -1,31 +1,66 @@
-.cform-search__form{
-    padding: var(--padding-container);
-    justify-content: center;
-}
+/* HM - CONTAINER : SEARCH / LOGIN */
+//in the father
+
+    /* HM - CONTAINER : SEARCH / LOGIN - BTN */
+    //in the father
+
+    /* HM - CONTAINER : SEARCH - CONTAINER */
+    .search-main__container{
+        //Already position:absolute about .container-popup
+        top: 3rem;
+        left: -1%;
+    }
+        .search-main__container-icon-filter{
+            margin: 0.5rem;
+            font-size: 1.25rem;
+            position: relative;
+            cursor: pointer;
+        }
+        .search-main__container-icon-filter:hover .search-main__container-tooltips-filter{
+            display: block;
+        }
+        .search-main__container-tooltips-filter{
+            width: 8rem;
+            position: absolute;
+            left: -8.5rem;
+            top: -0.75rem;
+            display: none;
+            border-right: 0.5rem solid var(--bg-color-primary);;
+        }
+        .search-main__container-text{
+            margin: 0.5rem;
+            width: 70%;
+        }
+        .search-main__container-btn{
+            color: white;
+            background-color: var(--bg-color-input);
+            margin-right: 0.5rem;
+            padding: 0.25rem;
+            border: 1px solid var(--bg-color-secondary-comp);
+            width: 2rem;
+            height: 2rem;
+            font-size: 1.25rem;
+            cursor: pointer;
+        }
 
 /*** -------------- RESPONSIVE -------------- ***/
-/* Extra large devices (large desktops, 1200px and up) */
-@media (max-width: 1200px) {
+/* Extra large devices */
+@media (max-width: 1440px) {
 
 }
 
-/* Large devices (desktops, 992px and up)*/
-@media (max-width: 992px) {
-    .cform-search__form__input{
-        margin-bottom: 0.25rem !important;
-    }
+/* Large devices */
+@media (max-width: 1024px) {
 }
 
-/* Medium devices (tablets, 768px and up) */
+/* Medium devices */
 @media (max-width: 768px) {
-    .cform-search__form__input{
-        margin-bottom: 0rem !important;
-    }
 }
 
- /*Small devices (landscape phones, 576px and up)*/
-@media (max-width: 576px) {
-    .cform-search__form__input, .cform-search__form__btn{
-        width: 80%;
-    }
+ /* Small devices */
+@media (max-width: 568px) {
+}
+
+/* Extra Small devices */
+@media (max-width: 320px) {
 }

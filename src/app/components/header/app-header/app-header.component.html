@@ -16,42 +16,61 @@
             <!-- Navbar links -->
             <ul class="nav-main__list">
                 <li class="nav-main__item" *ngFor="let menuItemFor of menuItems">
-                    <a class="nav-main__item-link link-effect-color link-effect-underground" [routerLink]="menuItemFor.path" routerLinkActive="active" [routerLinkActiveOptions]="{ exact : true}">{{menuItemFor.name}}</a>
+                    <a class="nav-main__item-link link-effect-underground" [routerLink]="menuItemFor.path" routerLinkActive="active" [routerLinkActiveOptions]="{ exact : true}">{{menuItemFor.name}}</a>
                 </li>
                 <li class="nav-main__item nav-main__item--subitem">
-                    <a class="nav-main__item-link link-effect-underground link-effect-color">
+                    <a class="nav-main__item-link link-effect-underground">
                         Con&oacute;cenos
                         <i class="fas fa-angle-down"></i>
                     </a>
                     <div class="nav-main__subitem">
-                        <a class="nav-main__subitem-link link-effect-color" routerLink="/club">El Club</a>
-                        <a class="nav-main__subitem-link link-effect-color" routerLink="/junta">Junta Directiva</a>
+                        <a class="nav-main__subitem-link" routerLink="/club">El Club</a>
+                        <a class="nav-main__subitem-link" routerLink="/junta">Junta Directiva</a>
                         <div class="item-divider"></div>
-                        <a class="nav-main__subitem-link link-effect-color" routerLink="/contacto">Contacto</a>
+                        <a class="nav-main__subitem-link" routerLink="/contacto">Contacto</a>
                         <div class="item-divider"></div>
-                        <a class="nav-main__subitem-link link-effect-color" routerLink="/registro">Ap&uacute;tate</a>
+                        <a class="nav-main__subitem-link" routerLink="/registro">Ap&uacute;tate</a>
                     </div>
                 </li>
             </ul>
         </nav>
         <!-- SERACH -->
+        <!-- <app-header-search></app-header-search> -->
         <div class="search-main">
             <div class="search-main__btn">
                 <i class="fas fa-search search-main__btn-icon link-effect-color"></i>
             </div>
             <div class="search-main__container container-popup">
                 <i class="fas fa-filter search-main__container-icon-filter link-effect-color">
-                    <select class="search-main__container-tooltips">
+                    <select class="search-main__container-tooltips-filter">
+                        <option value="default">- - -</option>
                         <option value="member">Miembros</option>
                         <option value="race">Carreras</option>
                         <option value="notice">Noticias</option>
                         <option value="train">Entrenos</option>
                     </select>
                 </i>
-                <input class="search-main__container-text" type="text" />
-                <div class="search-main__container-result">
-                    JR2
-                </div>
+                <form class="search-main__container-form" action="">
+                    <input type="text" class="search-main__container-form-text" placeholder="Buscar" name="formSearchValue" pattern="^[a-zñA-Záéíóú\\s/]{2,}"
+                        required title="Introduzca el valor a buscar" />
+                    <button type="submit" class="search-main__container-form-btn">
+                        <i class="fas fa-search search-main__container-form-btn-icon"></i>
+                    </button>
+                </form>
+                <ul class="search-main__container-result">
+                    <li class="search-main__container-result-item">
+                        <i class="fas fa-angle-right search-main__container-result-item-icon"></i>
+                        <span>Resultado1</span>
+                    </li>
+                    <li class="search-main__container-result-item">
+                        <i class="fas fa-angle-right search-main__container-result-item-icon"></i>
+                        <span>Resultado2</span>
+                    </li>
+                    <li class="search-main__container-result-item">
+                        <i class="fas fa-angle-right search-main__container-result-item-icon"></i>
+                        <span>Resultado3</span>
+                    </li>
+                </ul>
             </div>
         </div>
         <!-- LOGIN -->

@@ -16,16 +16,13 @@ interface MenuItem{
   styleUrls: ['./app-header.component.scss']
 })
 
-
-
 export class AppHeaderComponent implements OnInit {
 
   menuItems: Array<MenuItem> = [];
-  menuItem0: MenuItem = { name: 'Inicio', path: '/' };
-  menuItem1: MenuItem = { name: 'Miembros', path: '/miembros' };
-  menuItem2: MenuItem = { name: 'Carreras', path: '/carreras' };
-  menuItem3: MenuItem = { name: 'Noticias', path: '/noticias' };
-  menuItem4: MenuItem = { name: 'Entrenos', path: '/entrenos' };
+  menuItem0: MenuItem = { name: 'Miembros', path: '/miembros' };
+  menuItem1: MenuItem = { name: 'Carreras', path: '/carreras' };
+  menuItem2: MenuItem = { name: 'Noticias', path: '/noticias' };
+  menuItem3: MenuItem = { name: 'Entrenos', path: '/entrenos' };
 
   formForgotten: FormGroup;
   bForgottenShowMsg: boolean;
@@ -69,10 +66,10 @@ export class AppHeaderComponent implements OnInit {
 
   // *** MENU ***
   initMenu(){
+    this.menuItems.push(this.menuItem0);
     this.menuItems.push(this.menuItem1);
     this.menuItems.push(this.menuItem2);
     this.menuItems.push(this.menuItem3);
-    this.menuItems.push(this.menuItem4);
   }
 
   // *** FORM FORGOTTEN PASSWORD ***

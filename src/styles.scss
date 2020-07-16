@@ -6,13 +6,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
 
+/*** -------------- CONFIG -------------- ***/
 :root {
+    /* COLOR */
     --bg-color: #fafafa;
-    --bg-color-comp: #f9f9f9;
+    --bg-color-comp: #d1d7e6;
     --bg-color-primary: #1d242c;
     --bg-color-primary-comp: #2a343f;
     --bg-color-secondary: #828487;
     --bg-color-secondary-comp: #6e6f72;
+    --bg-color-input: #283843;
+    --bg-color-input-comp: #283443;
 
     --color: white;
     --color-primary: #e43f5a;
@@ -22,14 +26,17 @@
     --color-link: #8e8e8e;
     --color-link-comp: #dee2e6;
     --color-special: #00546b;
-    --color-error: #dc3545;
+    --color-focus: lightskyblue;
+    --color-invalid: #dc3545;
     --color-valid: #28a745;
 
+    /* FONT */
     --font-title: 'Roboto Slab', serif;
     --font-primary: 'Open Sans', sans-serif;
     --font-secondary: 'Roboto', sans-serif;
     --font-nav: 'Montserrat', sans-serif;
 
+    /* MEASURE */
     --min-width-mobile: 320px;
     --padding-container: 0 0.5rem;
     --font-size-small: 0.75rem;
@@ -38,7 +45,7 @@
 
 }
 
-/*** -------------- GENERIC -------------- ***/
+/*** -------------- BASE -------------- ***/
 *{
     color: var(--color);
     margin: 0;
@@ -47,8 +54,6 @@
     outline: 0;
     font-size: 100%;
     vertical-align: baseline;
-    text-decoration: none;
-    list-style: none;
     box-sizing: border-box;
 }
 
@@ -65,33 +70,53 @@ body{
 h1, h2, h3, h4, h5, h6{
     color: var(--color-primary);
     font-family: var(--font-title);
+    user-select: none;
 }
 
 nav{
     font-family: var(--font-nav);
 }
-ul{
-    display: inherit;
+    ul{
+        display: inherit;
+    }
+        li{
+            list-style: none;
+        }
+a{
+    color: var(--color-link);
+    transition: color 1s;
 }
 a:hover{
+    color: var(--color-link-comp);
     text-decoration: none;
 }
 
 input, textarea, select, option{
-    background-color: var(--bg-color-secondary-comp);
+    color: var(--bg-color);
+    background-color: var(--bg-color-input);
     margin: 0.5rem;
-    border: 1.5px solid var(--bg-color-primary-comp);
+    border: 1px solid var(--bg-color-secondary-comp);
     border-radius: 0.25rem;
     padding: 0.15rem;
     text-indent: 0.25rem;
     font-weight: 700;
+    font-size: 0.9rem;
 }
 input:hover, textarea:hover, select:hover{
-    border-color: var(--bg-color-secondary);
-}
-input:focus, textarea:focus, select:focus{
     border-color: var(--bg-color);
 }
+input:focus, textarea:focus, select:focus{
+    border-color: var(--color-focus);
+}
+/* input:required, textarea:required, select:required{
+    border-color: var(--color-primary-comp);
+}
+input:valid, textarea:valid, select:valid{
+    border-color: var(--color-valid);
+}
+input:invalid, textarea:invalid, select:invalid{
+    border-color: var(--color-invalid);
+} */
 
 strong, em{
     text-shadow: 2px 2px 3px black;
@@ -102,12 +127,9 @@ span{
     text-shadow: 1px 1px 2px var(--color-secondary);
     padding-right: 0.25rem;
 }
-samp{
-    text-align: center;
-}
 i{
     color: var(--bg-color-secondary);
-    text-shadow: 1px 1px 2px var(--color-special);
+    text-shadow: 1px 1px 2px var(--bg-color);
     font-size: 0.75rem;
 }
 
@@ -121,37 +143,15 @@ img{
     max-width: 100%; //responsive;
 }
 
-/*** -------------- CLASSES -------------- ***/
+/*** -------------- CLASSES - BLOCKS & INLINE -------------- ***/
 /* BACKGROUND */
-.section-back{
-    border-radius: 0.5rem;
-    transition: all 1s;
-}
-.section-back:hover{
-    background-color: black;
-    border: 0.2rem ridge var(--bg-color-primary);
-}
 .item-divider{
     width: 100%;
     height: 0.25rem;
     border-bottom: 1px dotted gray;
 }
 
-/* LINK */
-.link-effect-color{
-    color: var(--color-link);
-    transition: color 1s;
-}
-.link-effect-color:hover{
-    color: var(--color-link-comp);
-}
-
-/* IMAGAES */
-.icon32{
-    margin: 5px;
-    width: 32px;
-    height: 32px;
-}
+/* IMAGES */
 .icon48{
     margin: 0rem auto;
     width: 48px;
@@ -162,19 +162,15 @@ img{
     width: 64px;
     height: 64px;
 }
-.img-link{
-    margin: 0.5rem;
-    border-radius: 0.25rem;
-    background-color: var(--color-link);
-    transition-property: background-color, transform;
-    transition-duration: 1s, 0.25s;
+
+/*** -------------- HELPERS -------------- ***/
+/* LINK */
+.link-effect-color{
+    color: var(--color-link);
+    transition: color 1s;
 }
-.img-link:hover{
-    background-color: var(--color-link-comp) !important;
-    transform: scale(1.1);
-}
-.img-link:active{
-    transform: scale(0.8);
+.link-effect-color:hover{
+    color: var(--color-link-comp);
 }
 
 /* ANIMATES */
@@ -188,9 +184,9 @@ img{
 
 
 /*** -------------- CONTAINERS -------------- ***/
-.app-container{
-    background-color: var(--bg-color);
-}
+//TODO
+
+
 .main{
     padding: 0.15rem;
 }

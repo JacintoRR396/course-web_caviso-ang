@@ -17,7 +17,6 @@ export class AppHeaderSearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    // $(() => $('[data-toggle="tooltip"]').tooltip() );
   }
 
   createForm(){
